@@ -37,12 +37,13 @@ to felter viser brandgradienten med logo-watermark i stedet for et billede.
    mørk bund i stedet for et stort knapgitter midt på siden.
 6. **Gradienten som billede.** Jeres egne gradientfiler ligger som fuldbredde
    baggrund med et scrim, så teksten holder kontrast.
-7. **Menubjælken** ligger nu oven på hero'en i stedet for som en massiv bjælke
-   over den. Den er slankere, gennemsigtig i toppen, og bliver til en flydende,
-   afrundet bar med blur og hårfin kant, når man scroller.
-8. **Hero.** Over-overskriften er flyttet ned under logoet og siger nu
-   "Filmproduktion · Aalborg". Linjen om film, animation og fotografi er væk —
-   logoet og de to knapper står stærkere alene.
+7. **Menubjælken** følger samme opbygning som den nuværende sticky header:
+   menupunkter til venstre, logo i midten, Inspiration/Om os + outline-CTA +
+   sociale ikoner til højre. Logoet er skjult i toppen (hero'en har det store)
+   og toner ind, når baren sætter sig. Højden er 52px mod ca. 88px før, og
+   baren flyder som en pille oven på indholdet i stedet for at ligge som en
+   fuldbredde-blok.
+8. **Hero.** Kun logotypen og de to knapper. Over-overskriften er fjernet helt.
 9. **Bevægelse.** Langsom drift på hero-billedet, reveal ved scroll, hover-zoom
    på stills. Alt slået fra ved `prefers-reduced-motion`.
 
