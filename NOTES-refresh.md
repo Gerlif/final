@@ -38,11 +38,11 @@ to felter viser brandgradienten med logo-watermark i stedet for et billede.
 6. **Gradienten som billede.** Jeres egne gradientfiler ligger som fuldbredde
    baggrund med et scrim, så teksten holder kontrast.
 7. **Menubjælken** følger samme opbygning som den nuværende sticky header:
-   menupunkter til venstre, logo i midten, Inspiration/Om os + outline-CTA +
-   sociale ikoner til højre. Logoet er skjult i toppen (hero'en har det store)
-   og toner ind, når baren sætter sig. Højden er 52px mod ca. 88px før, og
-   baren flyder som en pille oven på indholdet i stedet for at ligge som en
-   fuldbredde-blok.
+   menupunkter til venstre, logo i midten, Inspiration/Om os + outline-CTA til
+   højre. Den går i fuld bredde, er gennemsigtig over hero'en og får baggrund,
+   blur og en hårfin underkant, når man scroller. Højde: 76px i toppen, 71px
+   når den sætter sig (mod ca. 88px på den nuværende side). Logoet er skjult i
+   toppen — hero'en har det store — og toner ind sammen med baren.
 8. **Hero.** Kun logotypen og de to knapper. Over-overskriften er fjernet helt.
 9. **Bevægelse.** Langsom drift på hero-billedet, reveal ved scroll, hover-zoom
    på stills. Alt slået fra ved `prefers-reduced-motion`.
