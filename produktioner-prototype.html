@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Produktioner Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,9 +56,16 @@ h1 em{font-weight:400;font-style:italic}
 .seg button:hover{color:var(--white)}
 .seg button[aria-pressed="true"]{background:rgba(141,141,255,.16);color:var(--white)}
 .seg .n{font-size:.75rem;color:var(--faint);font-variant-numeric:tabular-nums}
+@media (max-width:600px){
+  .seg{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;-ms-overflow-style:none}
+  .seg::-webkit-scrollbar{display:none}
+  .seg button{white-space:nowrap}
+  .f-right{width:100%}
+  .search{flex:1 1 auto}
+}
 .seg button[aria-pressed="true"] .n{color:rgba(255,255,255,.7)}
 
-.search{position:relative;display:flex;align-items:center;min-width:min(260px,100%)}
+.search{position:relative;display:flex;align-items:center;flex:0 1 260px;min-width:min(200px,100%)}
 .search svg{position:absolute;left:.85rem;width:15px;height:15px;color:var(--faint);pointer-events:none}
 .search input{width:100%;font-family:var(--fb);font-size:.9rem;color:var(--white);
   background:rgba(255,255,255,.03);border:1px solid var(--line-soft);border-radius:999px;
@@ -69,7 +77,28 @@ h1 em{font-weight:400;font-style:italic}
 .search .clear:hover{color:var(--white)}
 .search[data-filled="true"] .clear{display:grid}
 
-.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+/* sammenfoldeligt typepanel */
+.f-right{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;flex:1 1 auto;justify-content:flex-end}
+@media (min-width:760px){.f-right{flex-wrap:nowrap}}
+.typebtn{flex:none;font-family:var(--fu);font-size:.87rem;color:var(--muted);cursor:pointer;
+  background:rgba(255,255,255,.02);border:1px solid var(--line-soft);border-radius:999px;
+  padding:.55rem 1rem;display:inline-flex;align-items:center;gap:.5rem;
+  transition:color .25s ease,border-color .25s ease,background-color .25s ease}
+.typebtn:hover{color:var(--white);border-color:rgba(141,141,255,.5)}
+.typebtn[aria-expanded="true"]{color:var(--white);border-color:rgba(141,141,255,.6);background:rgba(141,141,255,.1)}
+.typebtn.is-set{color:var(--white);border-color:rgba(141,141,255,.75);background:rgba(141,141,255,.14)}
+.typebtn .n{font-size:.75rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.typebtn .chev{width:.7rem;height:.7rem;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.typebtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.typebtn .x{display:inline-grid;place-items:center;width:1.1rem;height:1.1rem;border-radius:50%;
+  background:rgba(255,255,255,.14);font-size:.8rem;line-height:1}
+.typebtn .x:hover{background:rgba(255,255,255,.28)}
+
+.chips-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.2,.7,.2,1),
+  opacity .3s ease;opacity:0}
+.chips-wrap[data-open="true"]{grid-template-rows:1fr;opacity:1}
+.chips-inner{overflow:hidden;min-height:0}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;padding-top:.15rem}
 .chips button{font-family:var(--fu);font-size:.8rem;color:var(--muted);background:transparent;cursor:pointer;
   padding:.5rem .9rem;border:1px solid var(--line-soft);border-radius:var(--r1);
   display:inline-flex;align-items:center;gap:.45rem;
@@ -108,7 +137,15 @@ main{padding-block:clamp(2rem,4vw,3.25rem) clamp(4rem,8vw,7rem)}
   display:flex;flex-wrap:wrap;gap:.35rem .8rem}
 .card .tag{color:var(--muted)}
 
-.more{display:flex;justify-content:center;margin-top:clamp(2.5rem,5vw,4rem)}
+.more{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-top:clamp(2.5rem,5vw,4rem)}
+.loading{font-family:var(--fu);font-size:.82rem;letter-spacing:.06em;color:var(--faint);
+  display:inline-flex;align-items:center;gap:.6rem}
+.loading::before{content:"";width:14px;height:14px;border-radius:50%;
+  border:1.5px solid rgba(141,141,255,.3);border-top-color:var(--peri);animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+.end{text-align:center;font-family:var(--fu);font-size:.8rem;letter-spacing:.06em;color:var(--faint);
+  margin-top:clamp(2.5rem,5vw,4rem)}
+.end::before{content:"";display:block;width:2rem;height:1px;background:var(--line);margin:0 auto 1.1rem}
 .more button{font-family:var(--fu);font-size:.92rem;font-weight:500;color:var(--white);cursor:pointer;
   background:transparent;border:1px solid rgba(255,255,255,.42);border-radius:var(--r1);padding:.85rem 1.8rem;
   display:inline-flex;align-items:center;gap:.6rem;
@@ -138,6 +175,8 @@ main{padding-block:clamp(2rem,4vw,3.25rem) clamp(4rem,8vw,7rem)}
   <div class="wrap filters-in">
     <div class="f-row">
       <div class="seg" id="seg" role="group" aria-label="Hovedkategori"></div>
+      <div class="f-right">
+      <button class="typebtn" id="typebtn" type="button" aria-expanded="false" aria-controls="chipsWrap"></button>
       <div class="search" id="search" data-filled="false">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
@@ -146,8 +185,11 @@ main{padding-block:clamp(2rem,4vw,3.25rem) clamp(4rem,8vw,7rem)}
         <input type="search" id="q" placeholder="Søg på titel eller kunde" aria-label="Søg i produktioner" autocomplete="off">
         <button class="clear" id="qclear" type="button" aria-label="Ryd søgning">×</button>
       </div>
+      </div>
     </div>
-    <div class="chips" id="chips" role="group" aria-label="Type"></div>
+    <div class="chips-wrap" id="chipsWrap" data-open="false">
+      <div class="chips-inner"><div class="chips" id="chips" role="group" aria-label="Type"></div></div>
+    </div>
     <p class="status" id="status" aria-live="polite"></p>
   </div>
 </div>
@@ -158,7 +200,9 @@ main{padding-block:clamp(2rem,4vw,3.25rem) clamp(4rem,8vw,7rem)}
     <p><strong>Ingen produktioner matcher</strong>Prøv en anden kategori, eller ryd filtrene.</p>
     <button class="more" onclick="resetAll()" style="all:unset;cursor:pointer;color:var(--peri);text-decoration:underline;text-underline-offset:3px">Ryd alle filtre</button>
   </div>
-  <div class="more" id="more"><button type="button" id="moreBtn">Hent flere produktioner</button></div>
+  <div class="more" id="more"><span class="loading" id="loading">Henter flere</span>
+    <button type="button" id="moreBtn" hidden>Hent flere produktioner</button></div>
+  <p class="end" id="end" hidden></p>
   <p class="note"><b>Prototype.</b> De 115 produktioner, titler, kunder og thumbnails er hentet fra final.dk. Hovedkategorierne kommer fra jeres nuværende faner. Underkategorierne er <b>foreløbige</b> — udledt af titler og kundenavne, så filtreringen kan afprøves. De skal erstattes af jeres egne tags.</p>
 </main>
 
@@ -166,7 +210,8 @@ main{padding-block:clamp(2rem,4vw,3.25rem) clamp(4rem,8vw,7rem)}
 const PLAY = '<span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span>';
 const PAGE = 24;
 const MAINS = ['Alle','Video','Animation og VFX','Foto'];
-let state = {main:'Alle', type:null, q:'', shown:PAGE};
+let state = {main:'Alle', type:null, q:'', shown:PAGE, open:false};
+const CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
 const el = id => document.getElementById(id);
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
@@ -195,6 +240,17 @@ function renderChips(){
   el('chips').innerHTML = types.map(t =>
     `<button type="button" data-type="${t}" aria-pressed="${state.type===t}">${t}<span class="n">${counts[t]}</span></button>`
   ).join('');
+
+  const btn = el('typebtn');
+  btn.innerHTML = state.type
+    ? `${state.type}<span class="x" role="img" aria-label="Ryd type">×</span>`
+    : `Type<span class="n">${types.length}</span>${CHEV}`;
+  btn.classList.toggle('is-set', !!state.type);
+  btn.setAttribute('aria-expanded', String(state.open));
+  btn.setAttribute('aria-label', state.type ? `Type: ${state.type}. Klik for at rydde` : 'Vælg type');
+  const wrap = el('chipsWrap');
+  wrap.dataset.open = String(state.open);
+  wrap.inert = !state.open;
 }
 
 function renderGrid(){
@@ -208,7 +264,12 @@ function renderGrid(){
     </a>`).join('');
   el('empty').hidden = list.length > 0;
   el('grid').hidden = list.length === 0;
-  el('more').style.display = state.shown < list.length ? 'flex' : 'none';
+  const hasMore = state.shown < list.length;
+  el('more').style.display = hasMore ? 'flex' : 'none';
+  el('end').hidden = hasMore || list.length === 0;
+  if (!hasMore && list.length) el('end').textContent =
+    list.length === DATA.length ? `Det var alle ${list.length} produktioner`
+                                : `${list.length} produktioner i dette udvalg`;
 
   const active = [];
   if (state.main !== 'Alle') active.push(state.main);
@@ -232,14 +293,14 @@ function syncHash(){
 function readHash(){
   const p = new URLSearchParams(location.hash.slice(1));
   if (MAINS.includes(p.get('kategori'))) state.main = p.get('kategori');
-  if (p.get('type')) state.type = p.get('type');
+  if (p.get('type')) { state.type = p.get('type'); state.open = true; }
   if (p.get('q')) { state.q = p.get('q'); el('q').value = state.q; }
 }
 
 function render(){ renderSeg(); renderChips(); renderGrid(); syncHash();
   el('search').dataset.filled = state.q.trim() ? 'true' : 'false'; }
 
-function resetAll(){ state = {main:'Alle', type:null, q:'', shown:PAGE}; el('q').value=''; render();
+function resetAll(){ state = {main:'Alle', type:null, q:'', shown:PAGE, open:false}; el('q').value=''; render();
   window.scrollTo({top:0, behavior:'smooth'}); }
 
 el('seg').addEventListener('click', e => {
@@ -257,7 +318,29 @@ el('q').addEventListener('input', e => {
   t = setTimeout(() => { state.q = e.target.value; state.shown = PAGE; render(); }, 160);
 });
 el('qclear').addEventListener('click', () => { el('q').value=''; state.q=''; state.shown=PAGE; render(); el('q').focus(); });
-el('moreBtn').addEventListener('click', () => { state.shown += PAGE; renderGrid(); });
+el('typebtn').addEventListener('click', e => {
+  if (e.target.closest('.x')) { state.type = null; state.shown = PAGE; render(); return; }
+  state.open = !state.open; render();
+});
+el('moreBtn').addEventListener('click', loadMore);
+
+function loadMore(){
+  const total = pool(false).length;
+  if (state.shown >= total) return;
+  state.shown += PAGE;
+  renderGrid();
+}
+
+/* indlæs flere når bunden nærmer sig */
+if ('IntersectionObserver' in window){
+  const io = new IntersectionObserver(entries => {
+    if (entries.some(e => e.isIntersecting)) loadMore();
+  }, {rootMargin: '700px 0px'});
+  io.observe(el('more'));
+} else {
+  el('loading').hidden = true;
+  el('moreBtn').hidden = false;
+}
 
 readHash();
 render();
