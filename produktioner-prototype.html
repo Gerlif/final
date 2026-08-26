@@ -108,6 +108,7 @@ h1 em{font-weight:400;font-style:italic}
 .chips .n{font-size:.72rem;color:var(--faint);font-variant-numeric:tabular-nums}
 .chips button[aria-pressed="true"] .n{color:rgba(255,255,255,.65)}
 
+.status:empty{display:none}
 .status{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem 1rem;font-family:var(--fu);font-size:.8rem;
   color:var(--faint);letter-spacing:.02em}
 .status b{color:var(--text);font-weight:500;font-variant-numeric:tabular-nums}
@@ -275,9 +276,10 @@ function renderGrid(){
   if (state.main !== 'Alle') active.push(state.main);
   if (state.type) active.push(state.type);
   if (state.q.trim()) active.push(`“${state.q.trim()}”`);
-  el('status').innerHTML =
-    `<span>Viser <b>${Math.min(state.shown, list.length)}</b> af <b>${list.length}</b> produktioner</span>` +
-    (active.length ? `<span>· ${active.join(' · ')}</span><button type="button" id="reset">Ryd filtre</button>` : '');
+  el('status').innerHTML = active.length
+    ? `<span><b>${list.length}</b> ${list.length === 1 ? 'produktion' : 'produktioner'}</span>` +
+      `<span>${active.join(' · ')}</span><button type="button" id="reset">Ryd filtre</button>`
+    : '';
   const r = el('reset'); if (r) r.addEventListener('click', resetAll);
 }
 
