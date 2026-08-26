@@ -1,0 +1,137 @@
+/* ==================================================================
+   Final Film — kategorivælger til /produktioner/
+   Rører kun filterbjælken. Produktionernes eget markup og styling
+   er urørt; det eneste, filtreringen gør ved dem, er .ff-hidden.
+   ================================================================== */
+
+:root{
+  --ff-peri:#8D8DFF;
+  --ff-white:#fff;
+  --ff-text:#D9D9D9;
+  --ff-muted:rgba(217,217,217,.62);
+  --ff-faint:rgba(217,217,217,.38);
+  --ff-line:rgba(217,217,217,.08);
+  --ff-bg:rgba(29,32,40,.9);   /* = #1D2028 med gennemsigtighed */
+  --ff-radius:8px;
+}
+
+/* ---------- sektionens overskrift ---------- */
+.ff-head{padding-block:clamp(3rem,7vw,6rem) clamp(1.5rem,3vw,2.5rem);display:grid;gap:1.1rem 3rem}
+.ff-kicker{font-family:"REM-Regular",Verdana,Arial,sans-serif;font-size:.7rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ff-peri);
+  display:flex;align-items:center;gap:.8rem;margin:0}
+.ff-kicker::before{content:"";display:inline-block;width:1.75rem;height:1px;background:currentColor;opacity:.7}
+.ff-head h1{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;color:var(--ff-white);margin:0;
+  font-size:clamp(2.125rem,1.61rem + 2.1vw,3.5rem);line-height:1.08;letter-spacing:-.012em;
+  max-width:20ch;text-wrap:balance}
+.ff-head h1 em{font-weight:400;font-style:italic}
+.ff-head p{color:var(--ff-muted);max-width:60ch;margin:0}
+@media (min-width:900px){
+  .ff-head{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:end}
+  .ff-kicker{grid-column:1/-1}
+  .ff-head p{padding-bottom:.4rem}
+}
+
+/* ---------- filterbjælken ---------- */
+.ff-filter{position:sticky;top:0;z-index:20;background:var(--ff-bg);
+  backdrop-filter:blur(14px) saturate(1.2);border-block:1px solid var(--ff-line)}
+.ff-filter-in{display:flex;flex-direction:column;gap:0;padding-block:clamp(.85rem,2vw,1.05rem)}
+.ff-row{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1.25rem;justify-content:space-between}
+
+/* segmenteret hovedkategori-vælger */
+.ff-seg{display:inline-flex;gap:.25rem;padding:.25rem;border:1px solid var(--ff-line);border-radius:999px;
+  background:rgba(255,255,255,.02);flex-wrap:wrap}
+.ff-seg button{font-family:"REM-Regular",Verdana,Arial,sans-serif;font-size:.87rem;color:var(--ff-muted);
+  background:none;border:0;cursor:pointer;padding:.55rem 1.1rem;border-radius:999px;
+  display:inline-flex;align-items:center;gap:.45rem;
+  transition:background-color .25s ease,color .25s ease}
+.ff-seg button:hover{color:var(--ff-white)}
+.ff-seg button[aria-pressed="true"]{background:rgba(141,141,255,.16);color:var(--ff-white)}
+.ff-seg button[aria-pressed="true"] .ff-n{color:rgba(255,255,255,.7)}
+
+.ff-n{font-size:.75rem;color:var(--ff-faint);font-variant-numeric:tabular-nums}
+
+/* type-knap + søgefelt */
+.ff-right{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;flex:1 1 auto;justify-content:flex-end}
+@media (min-width:760px){.ff-right{flex-wrap:nowrap}}
+
+.ff-toggle{flex:none;font-family:"REM-Regular",Verdana,Arial,sans-serif;font-size:.87rem;color:var(--ff-muted);
+  cursor:pointer;background:rgba(255,255,255,.02);border:1px solid var(--ff-line);border-radius:999px;
+  padding:.55rem 1rem;display:inline-flex;align-items:center;gap:.5rem;
+  transition:color .25s ease,border-color .25s ease,background-color .25s ease}
+.ff-toggle:hover{color:var(--ff-white);border-color:rgba(141,141,255,.5)}
+.ff-toggle[aria-expanded="true"]{color:var(--ff-white);border-color:rgba(141,141,255,.6);background:rgba(141,141,255,.1)}
+.ff-toggle.is-set{color:var(--ff-white);border-color:rgba(141,141,255,.75);background:rgba(141,141,255,.14)}
+.ff-chev{width:.7rem;height:.7rem;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.ff-toggle[aria-expanded="true"] .ff-chev{transform:rotate(180deg)}
+.ff-x{display:inline-grid;place-items:center;width:1.1rem;height:1.1rem;border-radius:50%;
+  background:rgba(255,255,255,.14);font-size:.8rem;line-height:1}
+.ff-x:hover{background:rgba(255,255,255,.28)}
+
+.ff-search{position:relative;display:flex;align-items:center;flex:0 1 260px;min-width:min(200px,100%)}
+.ff-search svg{position:absolute;left:.85rem;width:15px;height:15px;color:var(--ff-faint);pointer-events:none}
+.ff-search input{width:100%;font-family:inherit;font-size:.9rem;color:var(--ff-white);
+  background:rgba(255,255,255,.03);border:1px solid var(--ff-line);border-radius:999px;
+  padding:.62rem 2.4rem;transition:border-color .25s ease,background-color .25s ease}
+.ff-search input::placeholder{color:var(--ff-faint)}
+.ff-search input:focus{outline:none;border-color:rgba(141,141,255,.55);background:rgba(141,141,255,.05)}
+.ff-search .ff-clear{position:absolute;right:.5rem;width:1.5rem;height:1.5rem;border:0;border-radius:50%;
+  background:none;color:var(--ff-faint);cursor:pointer;display:none;place-items:center;font-size:1rem;line-height:1}
+.ff-search .ff-clear:hover{color:var(--ff-white)}
+.ff-search[data-filled="true"] .ff-clear{display:grid}
+
+/* sammenfoldeligt typepanel — mellemrummet ligger indeni, så det
+   folder sammen med panelet og luften over/under bjælken bliver ens */
+.ff-panel{display:grid;grid-template-rows:0fr;opacity:0;
+  transition:grid-template-rows .35s cubic-bezier(.2,.7,.2,1),opacity .3s ease}
+.ff-panel[data-open="true"]{grid-template-rows:1fr;opacity:1}
+.ff-panel-inner{overflow:hidden;min-height:0}
+.ff-chips{display:flex;flex-wrap:wrap;gap:.5rem;padding-top:clamp(.7rem,1.6vw,.9rem)}
+.ff-chips button{font-family:"REM-Regular",Verdana,Arial,sans-serif;font-size:.8rem;color:var(--ff-muted);
+  background:transparent;cursor:pointer;padding:.5rem .9rem;border:1px solid var(--ff-line);
+  border-radius:var(--ff-radius);display:inline-flex;align-items:center;gap:.45rem;
+  transition:color .25s ease,border-color .25s ease,background-color .25s ease}
+.ff-chips button:hover{color:var(--ff-white);border-color:rgba(141,141,255,.5);background:rgba(141,141,255,.07)}
+.ff-chips button[aria-pressed="true"]{color:var(--ff-white);border-color:rgba(141,141,255,.75);
+  background:rgba(141,141,255,.14)}
+.ff-chips button[aria-pressed="true"] .ff-n{color:rgba(255,255,255,.65)}
+
+/* ---------- filtrering af eksisterende produktionselementer ---------- */
+.ff-hidden{display:none !important}
+
+/* ---------- indlæsning + tom tilstand ---------- */
+.ff-loader{display:flex;justify-content:center;margin-top:clamp(2.5rem,5vw,4rem)}
+.ff-loader[hidden]{display:none}
+.ff-loader span{font-family:"REM-Regular",Verdana,Arial,sans-serif;font-size:.82rem;letter-spacing:.06em;
+  color:var(--ff-faint);display:inline-flex;align-items:center;gap:.6rem}
+.ff-loader span::before{content:"";width:14px;height:14px;border-radius:50%;
+  border:1.5px solid rgba(141,141,255,.3);border-top-color:var(--ff-peri);animation:ff-spin .7s linear infinite}
+@keyframes ff-spin{to{transform:rotate(1turn)}}
+
+.ff-empty{padding:clamp(3rem,7vw,5rem) 0;text-align:center;color:var(--ff-muted)}
+.ff-empty[hidden]{display:none}
+.ff-empty strong{font-family:"Libre Baskerville",Georgia,serif;color:var(--ff-white);display:block;
+  font-size:1.3rem;margin-bottom:.5rem}
+.ff-empty button{background:none;border:0;cursor:pointer;color:var(--ff-peri);font-family:inherit;
+  font-size:inherit;text-decoration:underline;text-underline-offset:3px;padding:0;margin-top:1rem}
+.ff-empty button:hover{color:var(--ff-white)}
+
+/* ---------- små skærme (skal stå efter grundreglerne) ---------- */
+@media (max-width:600px){
+  .ff-seg{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;-ms-overflow-style:none;
+    scroll-snap-type:x proximity;
+    -webkit-mask:linear-gradient(90deg,#000 0,#000 calc(100% - 2.2rem),transparent 100%);
+    mask:linear-gradient(90deg,#000 0,#000 calc(100% - 2.2rem),transparent 100%)}
+  .ff-seg::-webkit-scrollbar{display:none}
+  .ff-seg button{white-space:nowrap;scroll-snap-align:start}
+  .ff-right{width:100%;flex-wrap:nowrap;gap:.5rem}
+  .ff-search{flex:1 1 120px;min-width:0}
+  .ff-search input{padding-inline:2.2rem 2rem;font-size:.85rem}
+  .ff-toggle{padding:.5rem .85rem;font-size:.84rem}
+  .ff-panel[data-open="true"] .ff-panel-inner{max-height:46vh;overflow-y:auto;overscroll-behavior:contain}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ff-panel,.ff-chev,.ff-seg button,.ff-chips button,.ff-toggle{transition:none}
+  .ff-loader span::before{animation:none}
+}

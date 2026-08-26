@@ -1,0 +1,2513 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — kategorivælger på sidens eget markup</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600&family=REM:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="filter-ui.css">
+<style>
+  /* Kun til demoen: efterligner sidens ramme og det nuværende grid.
+     I WordPress kommer det fra temaet — rør det ikke. */
+  body{margin:0;background:#1D2028;color:#D9D9D9;font-family:"Nunito Sans",system-ui,sans-serif;line-height:1.7}
+  .site-container{max-width:1400px;margin-inline:auto;padding-inline:clamp(1.25rem,4vw,4.5rem)}
+  .produktioner-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));
+    padding-block:clamp(2rem,4vw,3rem)}
+  .produktioner-grid-item img{width:100%;height:auto;display:block;border-radius:8px}
+  .produktioner-grid-item video,.video-spinner{display:none}
+  .produktioner-grid-item p{margin:.6rem 0 0}
+  .produktioner-grid-item a{text-decoration:none}
+  .ff-filter{padding-inline:0}
+  .demo-note{border-top:1px solid rgba(217,217,217,.08);margin-top:3rem;padding:1.5rem 0 4rem;
+    font-size:.82rem;color:rgba(217,217,217,.38);max-width:70ch}
+</style>
+</head>
+<body>
+<div class="site-container">
+
+<!--
+  Final Film — kategorivælger til /produktioner/
+  Indsættes mellem sidens overskrift og det eksisterende grid.
+  Alt med data-ff="..." læses af filter-ui.js. Rør ikke de attributter.
+-->
+
+<header class="ff-head">
+  <p class="ff-kicker">Produktioner</p>
+  <h1>Fortællinger, vi har skabt <em>sammen med vores kunder</em></h1>
+  <p>Reklamefilm, brandfilm, employer branding, animation og foto. Vælg en kategori, eller søg på kunde eller titel.</p>
+</header>
+
+<div class="ff-filter">
+  <div class="ff-filter-in">
+    <div class="ff-row">
+
+      <div class="ff-seg" data-ff="seg" role="group" aria-label="Hovedkategori">
+        <!-- knapper indsættes af filter-ui.js -->
+      </div>
+
+      <div class="ff-right">
+        <button class="ff-toggle" type="button" data-ff="toggle" aria-expanded="false" aria-controls="ff-panel">
+          <!-- etiket indsættes af filter-ui.js -->
+        </button>
+
+        <div class="ff-search" data-ff="search" data-filled="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" data-ff="input" id="ff-q" placeholder="Søg på titel eller kunde"
+                 aria-label="Søg i produktioner" autocomplete="off">
+          <button class="ff-clear" type="button" data-ff="clear" aria-label="Ryd søgning">×</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ff-panel" id="ff-panel" data-ff="panel" data-open="false">
+      <div class="ff-panel-inner">
+        <div class="ff-chips" data-ff="chips" role="group" aria-label="Type">
+          <!-- chips indsættes af filter-ui.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="produktioner-grid">
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="brandingfilm" data-search="Aalborg Convention Bureau – Brandingfilm Aalborg Convention Bureau">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/AACB-Hero_wide_10.37.49.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/03/AACB-Hero_wide_10.37.49.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/03/frame_878-1024x435.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/03/AACB-Hero_wide_10.37.49.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aacb-hero/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Aalborg Convention Bureau - Brandingfilm
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aacb-hero/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Convention Bureau‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="rejse-og-oplevelser" data-search="Viktors Farmor – Grækenland Viktors Farmor">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/02/Dentsu-x-VF-30-sek-Hero-16-9_13.28.9.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/viktors-farmor-graekenland-loop.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/02/Dentsu-x-VF-30-sek-Hero-16-9_13.28.9.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/viktors-farmor-graekenland/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Viktors Farmor - Grækenland
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/viktors-farmor-graekenland/">
+				<b>Klient:</b> <span class="notranslate">Viktors Farmor‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="event-og-aftermovie" data-search="AAH Trøjelancering 2025 Aalborg Håndbold">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/10/Aalborg-haandbold-Troejefilm-2025-16_9_16.42.24.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/10/Aalborg-haandbold-Troejefilm-2025-16_9_16.42.24.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/10/frame_85-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/10/Aalborg-haandbold-Troejefilm-2025-16_9_16.42.24.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aah-troejelancering-2025/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					AAH Trøjelancering 2025
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aah-troejelancering-2025/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Håndbold‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="CBS HD1 Copenhagen Business School (CBS)">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/03/HERO-CBS-HD1-HERO.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/03/HERO-CBS-HD1-HERO.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/03/VS-CBSHD1-HERO169HDmp4-Frameio-009-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/03/HERO-CBS-HD1-HERO.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/cbs-hd1/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					CBS HD1
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/cbs-hd1/">
+				<b>Klient:</b> <span class="notranslate">Copenhagen Business School (CBS)‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="sport" data-search="Carlsberg – OL-atlet Signe Bro Carlsberg">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/08/Signe-Hero-uden-supers-16x9-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/08/Signe-Hero-uden-supers-16x9-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/08/Signe-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/08/Signe-Hero-uden-supers-16x9-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/carlsberg-ol-atlet-signe-bro/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Carlsberg 0.0% - OL-atlet Signe Bro
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/carlsberg-ol-atlet-signe-bro/">
+				<b>Klient:</b> <span class="notranslate">Carlsberg‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="Hvad skal jeg læse? Aalborg University Business School (AAUBS)">
+	
+	<a href="https://final.dk/wp-content/uploads/2023/09/Hvad-skal-jeg-laese-AAUBS.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2023/09/Hvad-skal-jeg-laese-AAUBS.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2023/09/VS-AAUBS-HSJL-30sek169full-007-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2023/09/Hvad-skal-jeg-laese-AAUBS.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/hvad-skal-jeg-laese/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Hvad skal jeg læse?
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/hvad-skal-jeg-laese/">
+				<b>Klient:</b> <span class="notranslate">Aalborg University Business School (AAUBS)‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="kampagne" data-search="Lær at sortere – Highlights Aalborg Kommune x Nordværk">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/10/Affaldets-Vej-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/10/Affaldets-Vej-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/10/Affaldets-Vej.00_00_25_14.Still001-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/10/Affaldets-Vej-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/laer-at-sortere-highlights/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Lær at sortere - Highlights
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/laer-at-sortere-highlights/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Kommune x Nordværk‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="animation-og-vfx" data-types="animation-og-vfx" data-search="Gabriel – Rubbish Gabriel">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/06/Gabriel-Rubbish-16-9_2-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2024/06/Gabriel-Rubbish-Thumbnail-1.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2024/06/Gabriel-Rubbish-16-9_2-1.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/gabriel-rubbish/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Gabriel LOOP (Director's Cut)
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/gabriel-rubbish/">
+				<b>Klient:</b> <span class="notranslate">Gabriel‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="EUX TECHCOLLEGE">
+	
+	<a href="https://final.dk/wp-content/uploads/2023/08/Techcollege_EUX_Biospot.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2023/08/Techcollege_EUX_Biospot.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2023/08/EUX-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2023/08/Techcollege_EUX_Biospot.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/eux/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					EUX
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/eux/">
+				<b>Klient:</b> <span class="notranslate">TECHCOLLEGE‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="AAU Skalafilm – Rumteknologi Aalborg Universitet">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/10/Skalafilm-1-Rumteknologi-AAU_V02_DK_13.47.24.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/10/Skalafilm-1-Rumteknologi-AAU_V02_DK_13.47.24.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/10/frame_70-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/10/Skalafilm-1-Rumteknologi-AAU_V02_DK_13.47.24.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aau-skalafilm-rumteknologi/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					AAU Skalafilm &#8211; Rumteknologi
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aau-skalafilm-rumteknologi/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Universitet‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="Sundhedsmissionen – Tværfaglig forskning for fremtidens sundhed Aalborg Universitet">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/08/sundhedsmissionen-tvaerfaglig-forskning-for-fremtidens-sundhed.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/08/sundhedsmissionen-tvaerfaglig-forskning-for-fremtidens-sundhed.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/08/sundhedsmissionen-tvaerfaglig-forskning-for-fremtidens-sundhed-cover-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/08/sundhedsmissionen-tvaerfaglig-forskning-for-fremtidens-sundhed.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/sundhedsmissionen-tvaerfaglig-forskning-for-fremtidens-sundhed/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Sundhedsmissionen - Tværfaglig forskning for fremtidens sundhed
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/sundhedsmissionen-tvaerfaglig-forskning-for-fremtidens-sundhed/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Universitet‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="kampagne" data-search="Trekantområdet – Grøn omstilling kræver fællesskab Trekantområdet Danmark">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/08/trekantomraadet-groen-omstilling-kraever-faellesskab.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/trekantomraadet-groen-omstilling-kraever-faellesskab-loop-1.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/trekantomraadet-groen-omstilling-kraever-faellesskab.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/trekantomraadet-groen-omstilling-kraever-faellesskab/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Trekantområdet - Grøn omstilling kræver fællesskab
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/trekantomraadet-groen-omstilling-kraever-faellesskab/">
+				<b>Klient:</b> <span class="notranslate">Trekantområdet Danmark‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="event-og-aftermovie" data-search="Nibe Festival 2026 Aftermovie Nibe Festival">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/08/nibe-festival-2026-aftermovie.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/08/nibe-festival-2026-aftermovie.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/08/nibe-festival-2026-aftermovie-cover-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/08/nibe-festival-2026-aftermovie.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/nibe-festival-2026-aftermovie/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Nibe Festival 2026 Aftermovie
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/nibe-festival-2026-aftermovie/">
+				<b>Klient:</b> <span class="notranslate">Nibe Festival‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="MPG Branding Copenhagen Business School (CBS)">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/08/MPG-Brand_16x9_v5.0_11.47.41.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/08/MPG-Brand_16x9_v5.0_11.47.41.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/08/frame_90186-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/08/MPG-Brand_16x9_v5.0_11.47.41.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/mpg-branding/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					MPG Branding
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/mpg-branding/">
+				<b>Klient:</b> <span class="notranslate">Copenhagen Business School (CBS)‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="Nordjyllandsfondens forskningspris 2026 Aalborg Universitet (AAU)">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/06/Nordjyllandsfondens-forskningspris_V02_10.50.29.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/06/Nordjyllandsfondens-forskningspris_V02_10.50.29.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/06/frame_1398-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/06/Nordjyllandsfondens-forskningspris_V02_10.50.29.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/nordjyllandsfondens-forskningspris-2026/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Nordjyllandsfondens forskningspris 2026
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/nordjyllandsfondens-forskningspris-2026/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Universitet (AAU)‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="animation-og-vfx" data-types="animation-og-vfx" data-search="Port of Aalborg – 550 år Port of Aalborg">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/06/Port-of-Aalborg-Jubilaeumsfilm_10.15.36.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/port-of-aalborg-550-aar-loop-1.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/06/Port-of-Aalborg-Jubilaeumsfilm_10.15.36.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/port-of-aalborg-550-aar/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Port of Aalborg - 550 år
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/port-of-aalborg-550-aar/">
+				<b>Klient:</b> <span class="notranslate">Port of Aalborg‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="animation-og-vfx" data-types="animation-og-vfx" data-search="Sikkerhed starter med dig Elopak">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/04/Elopak-Sikkerhedsfilm_10.56.18.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/04/Elopak-Sikkerhedsfilm_10.56.18.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/04/frame_328-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/04/Elopak-Sikkerhedsfilm_10.56.18.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/sikkerhed-starter-med-dig/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Sikkerhed starter med dig
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/sikkerhed-starter-med-dig/">
+				<b>Klient:</b> <span class="notranslate">Elopak‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="brandingfilm" data-search="Spar Nord Fonden – Det Kærlige Måltid Spar Nord Fonden">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/Spar-nord-fonden-Det-kaerlige-maaltid-16-9-v1.5_11.6.55.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/03/Spar-nord-fonden-Det-kaerlige-maaltid-16-9-v1.5_11.6.55.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/03/DKM-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/03/Spar-nord-fonden-Det-kaerlige-maaltid-16-9-v1.5_11.6.55.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/spar-nord-fonden-det-kaerlige-maaltid/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Spar Nord Fonden - Det Kærlige Måltid
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/spar-nord-fonden-det-kaerlige-maaltid/">
+				<b>Klient:</b> <span class="notranslate">Spar Nord Fonden‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="animation-og-vfx" data-types="reklamefilm" data-search="Nescafé Kulta Nescafé">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/Brandheroes-Nescafe-Kulta_11.4.4.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/03/Brandheroes-Nescafe-Kulta_11.4.4.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/03/Nestle-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/03/Brandheroes-Nescafe-Kulta_11.4.4.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/nescafe-kulta/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Nescafé Kulta
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/nescafe-kulta/">
+				<b>Klient:</b> <span class="notranslate">Nescafé‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">Brandheroes</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="reklamefilm" data-search="Pepsi x Casper Drømme Pepsi">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/Pepsi x Casper Drømme - HERO v8_DA_10.43.53.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/pepsi-x-casper-droemme-loop.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/03/Pepsi x Casper Drømme - HERO v8_DA_10.43.53.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/pepsi-x-casper-droemme/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Pepsi x Casper Drømme
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/pepsi-x-casper-droemme/">
+				<b>Klient:</b> <span class="notranslate">Pepsi‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">WPP Media</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="employer-branding" data-search="CEGO Employer Branding: Jakob CEGO">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/Cego-Employer-Branding-Jacob-v.2_10.27.27.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/03/Cego-Employer-Branding-Jacob-v.2_10.27.27.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/03/frame_868-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/03/Cego-Employer-Branding-Jacob-v.2_10.27.27.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/cego-employer-branding-jakob/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					CEGO Employer Branding: Jakob
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/cego-employer-branding-jakob/">
+				<b>Klient:</b> <span class="notranslate">CEGO‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="kampagne" data-search="Red resterne og undgå madspild Mejeriforeningen">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/Dentsu-x-Majeriforeningen-Red-resterne-Hero-kort-v.3-gradet-SoMe_10.12.43.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/03/Dentsu-x-Majeriforeningen-Red-resterne-Hero-kort-v.3-gradet-SoMe_10.12.43.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/03/frame_204-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/03/Dentsu-x-Majeriforeningen-Red-resterne-Hero-kort-v.3-gradet-SoMe_10.12.43.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/red-resterne-og-undgaa-madspild/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Red resterne og undgå madspild
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/red-resterne-og-undgaa-madspild/">
+				<b>Klient:</b> <span class="notranslate">Mejeriforeningen‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="brandingfilm" data-search="Lilja x Ford Lilja">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/Lilja-X-Ford-poetry-v7.3_10.9.28.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/03/Lilja-X-Ford-poetry-v7.3_10.9.28.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/03/Lilja-x-Ford-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/03/Lilja-X-Ford-poetry-v7.3_10.9.28.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/lilja-x-ford/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Lilja x Ford
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/lilja-x-ford/">
+				<b>Klient:</b> <span class="notranslate">Lilja‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="CBS – HD2 Novo Copenhagen Business School">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/03/HD2-Novo-16.9-v3.2_9.52.21.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/03/HD2-Novo-16.9-v3.2_9.52.21.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/03/frame_1942-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/03/HD2-Novo-16.9-v3.2_9.52.21.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/cbs-hd2-novo/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					CBS - HD2 Novo
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/cbs-hd2-novo/">
+				<b>Klient:</b> <span class="notranslate">Copenhagen Business School‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="Fremtidens pølse Aalborg Universitet (AAU)">
+	
+	<a href="https://final.dk/wp-content/uploads/2026/08/fremtidens-poelse.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2026/08/fremtidens-poelse.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2026/08/fremtidens-poelse-cover-1-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2026/08/fremtidens-poelse.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aau-fremtidens-poelse/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Fremtidens pølse
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aau-fremtidens-poelse/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Universitet (AAU)‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="foto" data-types="fotografi" data-search="AAH Trøjelancering 2025 (Fotos) Aalborg Håndbold">
+	
+	<a href="https://final.dk/produktion/aah-troejefilm-2025-fotos/" class="final-thumbnail-link">
+	
+
+	
+		
+			<div class="final-foto-container">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/10/AAH-Troejefilm-2025-03698-1024x720.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+	
+      </div>
+    </a>
+
+
+
+	
+		<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aah-troejefilm-2025-fotos/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+			
+				AAH Trøjelancering 2025 (Fotos)
+			
+		</span></a><br>
+	
+	
+		<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aah-troejefilm-2025-fotos/"><b>Klient:</b> <span class="notranslate">Aalborg Håndbold‌‌ ‌‌ ‌‌ </span>
+				</a></p>
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="dokumentar" data-search="Under solen Det Grønne Musuem">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/10/det_grOenne_museum_under_solen_tvc_16-9_v02_sub-1080p_13.52.17.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/under-solen-loop.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2025/10/det_grOenne_museum_under_solen_tvc_16-9_v02_sub-1080p_13.52.17.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/under-solen/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Under solen
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/under-solen/">
+				<b>Klient:</b> <span class="notranslate">Det Grønne Musuem‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">Campfire & Co.</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="brandingfilm" data-search="Sundhedskoret Spar Nord Fonden">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/10/Spar-Nord-Fonden-Sundhedskor-Casefilm-HERO-16_9_13.40.31.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/10/Spar-Nord-Fonden-Sundhedskor-Casefilm-HERO-16_9_13.40.31.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/10/Sundhedskoret-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/10/Spar-Nord-Fonden-Sundhedskor-Casefilm-HERO-16_9_13.40.31.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/sundhedskoret/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Sundhedskoret
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/sundhedskoret/">
+				<b>Klient:</b> <span class="notranslate">Spar Nord Fonden‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="kampagne" data-search="Husk mad til motoren! – Del 2 Mejeriforeningen">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/05/Mad-til-motoren-2025-HERO-16_9-v6_14.54.3.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/05/Mad-til-motoren-2025-HERO-16_9-v6_14.54.3.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/05/Screenshot-2025-05-08-145355-1024x575.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/05/Mad-til-motoren-2025-HERO-16_9-v6_14.54.3.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/husk-mad-til-motoren-del-2/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Husk mad til motoren! &#8211; Del 2
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/husk-mad-til-motoren-del-2/">
+				<b>Klient:</b> <span class="notranslate">Mejeriforeningen‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="sport" data-search="Carlsberg – OL-atlet Frederik Rodenberg Carlsberg">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/08/Frederik-Hero-uden-supers-16x9-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/08/Frederik-Hero-uden-supers-16x9-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/08/Frederik-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/08/Frederik-Hero-uden-supers-16x9-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/carlsberg-ol-atlet-frederik-rodenberg/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Carlsberg 0.0% - OL-atlet Frederik Rodenberg
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/carlsberg-ol-atlet-frederik-rodenberg/">
+				<b>Klient:</b> <span class="notranslate">Carlsberg‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="Få styr på Moodle AAU (Aalborg Universitet)">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/08/Moodle-Intro-16-9-v3-1_10.8.57.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/08/Moodle-Intro-16-9-v3-1_10.8.57.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/08/VS-MoodleIntro-16-9-v3mp4-Frameio-110-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/08/Moodle-Intro-16-9-v3-1_10.8.57.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/faa-styr-paa-moodle/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Få styr på Moodle
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/faa-styr-paa-moodle/">
+				<b>Klient:</b> <span class="notranslate">AAU (Aalborg Universitet)‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="reklamefilm" data-search="Vialerg – Allergi kan ramme når du mindst venter det Orifarm - Vialerg">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/05/Vialerg-Foedselsdag-20-sek-16-9_14.2.23.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/allergi-kan-ramme-naar-du-mindst-venter-det-loop.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2025/05/Vialerg-Foedselsdag-20-sek-16-9_14.2.23.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/allergi-kan-ramme-naar-du-mindst-venter-det/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Vialerg &#8211; Allergi kan ramme når du mindst venter det
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/allergi-kan-ramme-naar-du-mindst-venter-det/">
+				<b>Klient:</b> <span class="notranslate">Orifarm - Vialerg‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="casefilm" data-search="Danish Crane Building – Casefilm Danish Crane Building">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/04/DCB-120T-traverskran-16-9-v.2-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/04/DCB-120T-traverskran-16-9-v.2-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/04/DCB-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/04/DCB-120T-traverskran-16-9-v.2-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/danish-crane-building-casefilm/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Danish Crane Building - Casefilm
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/danish-crane-building-casefilm/">
+				<b>Klient:</b> <span class="notranslate">Danish Crane Building‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="kampagne" data-search="Husk mad til motoren! Mejeriforeningen">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/08/Mejeriforeningen-Hero-30-sek-16-9-Facebook-Newsfeed-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/08/Mejeriforeningen-Hero-30-sek-16-9-Facebook-Newsfeed-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/08/Screenshot-2024-08-22-124333-1024x574.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/08/Mejeriforeningen-Hero-30-sek-16-9-Facebook-Newsfeed-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/husk-mad-til-motoren/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Husk mad til motoren!
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/husk-mad-til-motoren/">
+				<b>Klient:</b> <span class="notranslate">Mejeriforeningen‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">Dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="animation-og-vfx" data-types="animation-og-vfx" data-search="First Lego League – Coding Pirates Lasse Winther">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/03/Lasse-Winther-Coding-Pirates-v2_15.24.7.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/03/Lasse-Winther-Coding-Pirates-v2_15.24.7.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/03/VS-LasseWinther-CodingPiratesv2mp4-Frameio-153-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/03/Lasse-Winther-Coding-Pirates-v2_15.24.7.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/first-lego-league-coding-pirates/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					First Lego League - Coding Pirates
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/first-lego-league-coding-pirates/">
+				<b>Klient:</b> <span class="notranslate">Lasse Winther‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="CBS HD2 – EY Copenhagen Business School">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/03/CBS-HD2-EY-HERO-16_9_15.18.11.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2025/03/CBS-HD2-EY-HERO-16_9_15.18.11.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/03/VS-CBSHD2EY-HERO169mp4-Frameio-008-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2025/03/CBS-HD2-EY-HERO-16_9_15.18.11.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/cbs-hd2-ey/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					CBS HD2 - EY
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/cbs-hd2-ey/">
+				<b>Klient:</b> <span class="notranslate">Copenhagen Business School‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="brandingfilm" data-search="Aalborg Portland – 2030 Roadmap Aalborg Portland">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/10/Aalborg-Portland-Peter-v5_12.52.28.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/10/Aalborg-Portland-Peter-v5_12.52.28.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2025/03/Portland-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/10/Aalborg-Portland-Peter-v5_12.52.28.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aalborg-portland-2030-roadmap/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Aalborg Portland - 2030 Roadmap
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aalborg-portland-2030-roadmap/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Portland‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="rejse-og-oplevelser" data-search="Rejser du Vil Ringe hjem om Viktors Farmor">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/10/Viktors-Farmor-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/10/Viktors-Farmor-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/10/Viktors-Farmor.00_00_24_06.Still001-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/10/Viktors-Farmor-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/rejser-du-vil-ringe-hjem-om/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Rejser du Vil Ringe hjem om
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/rejser-du-vil-ringe-hjem-om/">
+				<b>Klient:</b> <span class="notranslate">Viktors Farmor‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="AAU Skalafilm – Demens og musikterapi Aalborg Universitet">
+	
+	<a href="https://final.dk/wp-content/uploads/2025/01/AAU-Skalavideo-5-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2026/08/aau-skalafilm-demens-og-musikterapi-loop.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2025/01/AAU-Skalavideo-5-1.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aau-skalafilm-demens-og-musikterapi/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					AAU Skalafilm - Demens og musikterapi
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aau-skalafilm-demens-og-musikterapi/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Universitet‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="animation-og-vfx" data-types="reklamefilm" data-search="Telmore x Netflix – Squid game S2 Vinia Media">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/12/drum_-_telmore_x_netflix_-_squid_game_s2_-_45_sek_-_2_35_16_9__-_preview-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/12/drum_-_telmore_x_netflix_-_squid_game_s2_-_45_sek_-_2_35_16_9__-_preview-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/12/drum_-_telmore_x_netflix_-_squid_game_s2-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/12/drum_-_telmore_x_netflix_-_squid_game_s2_-_45_sek_-_2_35_16_9__-_preview-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/telmore-x-netflix-squid-game-s2/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Telmore x Netflix - Squid game S2 (VFX)
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/telmore-x-netflix-squid-game-s2/">
+				<b>Klient:</b> <span class="notranslate">Vinia Media‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">Drum CPH</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="mode-og-livsstil" data-search="NA-KD – Fall 24 NA-KD">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/10/Na-kd-Efteraar-2024-Directors-cut-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/10/Na-kd-Efteraar-2024-Directors-cut-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/10/Directors-cut.00_00_15_05.Still001-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/10/Na-kd-Efteraar-2024-Directors-cut-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/na-kd-fall-24/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					NA-KD - Fall 24 (Director's Cut)
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/na-kd-fall-24/">
+				<b>Klient:</b> <span class="notranslate">NA-KD‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="rejse-og-oplevelser" data-search="HimmerLand Resort – En destination for B2B arrangementer HimmerLand">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/12/HIMMERLAND_B2B_16-9-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/12/HIMMERLAND_B2B_16-9-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/12/HIMMERLAND_B2B-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/12/HIMMERLAND_B2B_16-9-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/himmerland-resort-en-destination-for-b2b-arrangementer/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					HimmerLand Resort - En destination for B2B arrangementer
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/himmerland-resort-en-destination-for-b2b-arrangementer/">
+				<b>Klient:</b> <span class="notranslate">HimmerLand‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">Campfire & Co.</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="event-og-aftermovie" data-search="Aalborg 2024: European Conference on Sustainable Cities &amp; Towns Aalborg Kommune">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/12/Aalborg-Kommune-Aalborg-2024-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/12/Aalborg-Kommune-Aalborg-2024-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/12/Aalborg_2024-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/12/Aalborg-Kommune-Aalborg-2024-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aalborg-2024-european-conference-on-sustainable-cities-towns/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Aalborg 2024: European Conference on Sustainable Cities & Towns
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aalborg-2024-european-conference-on-sustainable-cities-towns/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Kommune‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="sport" data-search="Siemens x Brian Holm Siemens Home Appliances">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/10/Siemens-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/10/Siemens-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/12/Siemens-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/10/Siemens-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/siemens-x-brian-holm/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Siemens x Brian Holm
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/siemens-x-brian-holm/">
+				<b>Klient:</b> <span class="notranslate">Siemens Home Appliances‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="animation-og-vfx" data-types="animation-og-vfx" data-search="Invicta Formula Wheel – Boot Animation Asetek">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/10/Asetek-Simsports-Rat-Display-Animation-Intro-med-logo-med-nordlys-final-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-lazy-video-container lazy-load">
+			
+			<video
+			  muted
+			 loop
+			 autoplay
+			 preload="none"
+			loading="lazy"
+			  playsinline
+			 class="placeholder"
+			>
+			  <source
+				src="https://final.dk/wp-content/uploads/2024/10/Asetek-Simsports-Rat-Display-Animation-Intro-med-logo-med-nordlys-thumb-1.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<video muted loop preload="none" loading="lazy" playsinline class="hover-video">
+			  <source
+				src="https://final.dk/wp-content/uploads/2024/10/Asetek-Simsports-Rat-Display-Animation-Intro-med-logo-med-nordlys-final-1.mp4"
+				type="video/mp4"
+			  />
+			  Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/invicta-formula-wheel-boot-animation/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Invicta Formula Wheel - Boot Animation
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/invicta-formula-wheel-boot-animation/">
+				<b>Klient:</b> <span class="notranslate">Asetek‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="uddannelse-og-studieliv" data-search="AAU Studiestart 2024 Aalborg Universitet">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/10/AAU-Studiestart-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/10/AAU-Studiestart-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/10/AAU-Studiestart-2024.00_00_20_07.Still003-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/10/AAU-Studiestart-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aau-studiestart-2024/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					AAU Studiestart 2024
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aau-studiestart-2024/">
+				<b>Klient:</b> <span class="notranslate">Aalborg Universitet‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="reklamefilm" data-search="Gøl Grill Tips Gøl">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/05/Goel_tips_Tip_A_9_16_DirectorsCut-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/05/Goel_tips_Tip_A_9_16_DirectorsCut-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/05/GoelThumb-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/05/Goel_tips_Tip_A_9_16_DirectorsCut-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/goel-grill-tips/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Gøl Grill Tips
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/goel-grill-tips/">
+				<b>Klient:</b> <span class="notranslate">Gøl‌‌ ‌‌ ‌‌ </span>
+				<b>Bureau:</b> <span class="notranslate">dentsu</span>
+			</a></p>
+		
+	
+</div>
+<div class="produktioner-grid-item aos-fade" data-aos="fade" data-main="video" data-types="dokumentar" data-search="Så vidt er vi kommet – Trailer Helle Stenum">
+	
+	<a href="https://final.dk/wp-content/uploads/2024/03/Stenum-Dokumentar-Trailer-v5-1.mp4?controls=0" data-lity>
+	
+
+	
+		
+			
+			<div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/2024/03/Stenum-Dokumentar-Trailer-v5-1.mp4">
+			
+			<img decoding="async"
+				 src="https://final.dk/wp-content/uploads/2024/03/VS-StenumDokumentar-Trailerv5mp4-Frameio-155-1024x576.webp"
+				 alt="Thumbnail"
+				 loading="lazy"
+				 />
+			<video muted loop preload="none" loading="lazy" playsinline>
+				<source
+						src="https://final.dk/wp-content/uploads/2024/03/Stenum-Dokumentar-Trailer-v5-1.mp4"
+						type="video/mp4"
+						/>
+				Your browser does not support the video tag.
+			</video>
+			<div class="video-spinner"></div>
+		
+	
+      </div>
+    </a>
+
+
+
+	
+		
+			<p style="line-height: 1; text-align: left;"><a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/saa-vidt-er-vi-kommet-trailer/"><span style="font-family:REM-Light; text-align: left;" class="notranslate">
+				
+					Så vidt er vi kommet
+				
+			</span></a><br>
+		
+	
+	
+		
+			<a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/saa-vidt-er-vi-kommet-trailer/">
+				<b>Klient:</b> <span class="notranslate">Helle Stenum‌‌ ‌‌ ‌‌ </span>
+				
+			</a></p>
+		
+	
+</div>
+</div>
+
+<!-- tom tilstand: vises automatisk når intet matcher -->
+<div class="ff-empty" data-ff="empty" hidden>
+  <p><strong>Ingen produktioner matcher</strong>Prøv en anden kategori, eller ryd filtrene.</p>
+  <button type="button" data-ff="reset">Ryd alle filtre</button>
+</div>
+
+<!-- indlæsningszone: skal ligge EFTER grid'et. Skjules automatisk,
+     når alt er vist. Knappen er fallback uden IntersectionObserver. -->
+<div class="ff-loader" data-ff="loader">
+  <span>Henter flere</span>
+  <button type="button" data-ff="more" hidden>Hent flere produktioner</button>
+</div>
+
+
+
+
+<p class="demo-note">Demo. Produktionernes markup er kopieret direkte fra final.dk/produktioner/ —
+kun <code>data-main</code>, <code>data-types</code> og <code>data-search</code> er tilføjet på hvert
+grid-item. Billeder hentes fra final.dk, så demoen kræver netadgang. Grid-styling herover er en
+grov efterligning, så man kan se filtreringen virke; i WordPress bruges temaets eget.</p>
+
+</div>
+
+<script src="filter-ui.js"></script>
+<script>
+  FinalFilter.init({
+    batch: 12,
+    mains: [
+      { slug: '',                 label: 'Alle' },
+      { slug: 'video',            label: 'Video' },
+      { slug: 'animation-og-vfx', label: 'Animation og VFX' },
+      { slug: 'foto',             label: 'Foto' }
+    ],
+    labels: {
+      'animation-og-vfx':       'Animation & VFX',
+      'uddannelse-og-studieliv':'Uddannelse & studieliv',
+      'event-og-aftermovie':    'Event & aftermovie',
+      'rejse-og-oplevelser':    'Rejse & oplevelser',
+      'mode-og-livsstil':       'Mode & livsstil',
+      'employer-branding':      'Employer branding'
+    }
+  });
+</script>
+</body>
+</html>

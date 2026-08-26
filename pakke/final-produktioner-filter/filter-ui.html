@@ -1,0 +1,115 @@
+<!--
+  Final Film — kategorivælger til /produktioner/
+  Indsættes mellem sidens overskrift og det eksisterende grid.
+  Alt med data-ff="..." læses af filter-ui.js. Rør ikke de attributter.
+-->
+
+<header class="ff-head">
+  <p class="ff-kicker">Produktioner</p>
+  <h1>Fortællinger, vi har skabt <em>sammen med vores kunder</em></h1>
+  <p>Reklamefilm, brandfilm, employer branding, animation og foto. Vælg en kategori, eller søg på kunde eller titel.</p>
+</header>
+
+<div class="ff-filter">
+  <div class="ff-filter-in">
+    <div class="ff-row">
+
+      <div class="ff-seg" data-ff="seg" role="group" aria-label="Hovedkategori">
+        <!-- knapper indsættes af filter-ui.js -->
+      </div>
+
+      <div class="ff-right">
+        <button class="ff-toggle" type="button" data-ff="toggle" aria-expanded="false" aria-controls="ff-panel">
+          <!-- etiket indsættes af filter-ui.js -->
+        </button>
+
+        <div class="ff-search" data-ff="search" data-filled="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input type="search" data-ff="input" id="ff-q" placeholder="Søg på titel eller kunde"
+                 aria-label="Søg i produktioner" autocomplete="off">
+          <button class="ff-clear" type="button" data-ff="clear" aria-label="Ryd søgning">×</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ff-panel" id="ff-panel" data-ff="panel" data-open="false">
+      <div class="ff-panel-inner">
+        <div class="ff-chips" data-ff="chips" role="group" aria-label="Type">
+          <!-- chips indsættes af filter-ui.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     HER LIGGER DET EKSISTERENDE GRID — UÆNDRET, BORTSET FRA
+     data-main OG data-types PÅ HVERT ELEMENT.
+     ============================================================ -->
+<div class="produktioner-grid">
+
+  <div class="produktioner-grid-item aos-fade"
+       data-aos="fade"
+       data-main="video"
+       data-types="brandingfilm,kampagne"
+       data-search="Aalborg Convention Bureau - Brandingfilm Aalborg Convention Bureau">
+    <!-- ↓ præcis som i dag: thumbnail, hover-video, titel, klient ↓ -->
+    <a href="https://final.dk/wp-content/uploads/…/AACB-Hero.mp4?controls=0" data-lity>
+      <div class="final-thumbnail-container" data-video-src="https://final.dk/wp-content/uploads/…/AACB-Hero.mp4">
+        <img src="…frame_878-1024x435.webp" alt="Thumbnail" loading="lazy">
+        <video muted loop preload="none" playsinline>
+          <source src="https://final.dk/wp-content/uploads/…/AACB-Hero.mp4" type="video/mp4">
+        </video>
+        <div class="video-spinner"></div>
+      </div>
+    </a>
+    <p style="line-height: 1; text-align: left;">
+      <a style="color: #d9d9d9; text-decoration: none;" href="https://final.dk/produktion/aacb-hero/">
+        <span style="font-family:REM-Light;" class="notranslate">Aalborg Convention Bureau - Brandingfilm</span></a><br>
+      <a style="color: #76777f; text-decoration: none; font-size: small;" href="https://final.dk/produktion/aacb-hero/">
+        <b>Klient:</b> <span class="notranslate">Aalborg Convention Bureau</span></a>
+    </p>
+  </div>
+
+  <!-- … resten af produktionerne … -->
+</div>
+
+
+<!-- tom tilstand: vises automatisk når intet matcher -->
+<div class="ff-empty" data-ff="empty" hidden>
+  <p><strong>Ingen produktioner matcher</strong>Prøv en anden kategori, eller ryd filtrene.</p>
+  <button type="button" data-ff="reset">Ryd alle filtre</button>
+</div>
+
+<!-- indlæsningszone: skal ligge EFTER grid'et. Skjules automatisk,
+     når alt er vist. Knappen er fallback uden IntersectionObserver. -->
+<div class="ff-loader" data-ff="loader">
+  <span>Henter flere</span>
+  <button type="button" data-ff="more" hidden>Hent flere produktioner</button>
+</div>
+
+
+<script src="/wp-content/themes/kadence-child-theme/js/filter-ui.js"></script>
+<script>
+  FinalFilter.init({
+    batch: 24,
+    mains: [
+      { slug: '',                 label: 'Alle' },
+      { slug: 'video',            label: 'Video' },
+      { slug: 'animation-og-vfx', label: 'Animation og VFX' },
+      { slug: 'foto',             label: 'Foto' }
+    ],
+    // valgfrit: pæne navne til typer, hvis slug ikke er nok
+    labels: {
+      'employer-branding': 'Employer branding',
+      'animation-vfx':     'Animation & VFX'
+    },
+    // AOS skal have besked, når elementer dukker op igen
+    onFilter: function () { if (window.AOS) AOS.refreshHard(); }
+  });
+</script>
