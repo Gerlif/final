@@ -134,9 +134,6 @@ main{padding-block:clamp(2rem,4vw,3.25rem) clamp(4rem,8vw,7rem)}
 .loading::before{content:"";width:14px;height:14px;border-radius:50%;
   border:1.5px solid rgba(141,141,255,.3);border-top-color:var(--peri);animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(1turn)}}
-.end{text-align:center;font-family:var(--fu);font-size:.8rem;letter-spacing:.06em;color:var(--faint);
-  margin-top:clamp(2.5rem,5vw,4rem)}
-.end::before{content:"";display:block;width:2rem;height:1px;background:var(--line);margin:0 auto 1.1rem}
 .more button{font-family:var(--fu);font-size:.92rem;font-weight:500;color:var(--white);cursor:pointer;
   background:transparent;border:1px solid rgba(255,255,255,.42);border-radius:var(--r1);padding:.85rem 1.8rem;
   display:inline-flex;align-items:center;gap:.6rem;
@@ -205,7 +202,6 @@ main{padding-block:clamp(2rem,4vw,3.25rem) clamp(4rem,8vw,7rem)}
   </div>
   <div class="more" id="more"><span class="loading" id="loading">Henter flere</span>
     <button type="button" id="moreBtn" hidden>Hent flere produktioner</button></div>
-  <p class="end" id="end" hidden></p>
   <p class="note"><b>Prototype.</b> De 115 produktioner, titler, kunder og thumbnails er hentet fra final.dk. Hovedkategorierne kommer fra jeres nuværende faner. Underkategorierne er <b>foreløbige</b> — udledt af titler og kundenavne, så filtreringen kan afprøves. De skal erstattes af jeres egne tags.</p>
 </main>
 
@@ -267,12 +263,7 @@ function renderGrid(){
     </a>`).join('');
   el('empty').hidden = list.length > 0;
   el('grid').hidden = list.length === 0;
-  const hasMore = state.shown < list.length;
-  el('more').style.display = hasMore ? 'flex' : 'none';
-  el('end').hidden = hasMore || list.length === 0;
-  if (!hasMore && list.length) el('end').textContent =
-    list.length === DATA.length ? `Det var alle ${list.length} produktioner`
-                                : `${list.length} produktioner i dette udvalg`;
+  el('more').style.display = state.shown < list.length ? 'flex' : 'none';
 
 }
 
