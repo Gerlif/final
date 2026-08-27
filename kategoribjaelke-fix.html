@@ -1,0 +1,259 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kategoribjælken på Mobil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600&family=REM:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#1D2028; --panel:#252C39; --white:#fff; --text:#D9D9D9;
+  --muted:rgba(217,217,217,.62); --faint:rgba(217,217,217,.38);
+  --ff-line:rgba(217,217,217,.10); --line-soft:rgba(217,217,217,.07);
+  --peri:#8D8DFF; --ok:#7FD1A6; --bad:#FF9147;
+  --fh:"Libre Baskerville",Georgia,serif; --fb:"Nunito Sans",system-ui,sans-serif;
+  --fu:"REM",Verdana,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--fb);line-height:1.7;
+  font-size:clamp(1rem,.97rem + .16vw,1.0625rem);-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
+.kicker{font-family:var(--fu);font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--peri);display:flex;align-items:center;gap:.8rem;margin:0 0 1rem}
+.kicker::before{content:"";display:inline-block;width:1.75rem;height:1px;background:currentColor;opacity:.7}
+h1{font-family:var(--fh);font-weight:700;color:var(--white);margin:0 0 1rem;
+  font-size:clamp(1.8rem,1.4rem + 1.8vw,2.7rem);line-height:1.1;letter-spacing:-.012em;max-width:18ch;text-wrap:balance}
+h1 em{font-weight:400;font-style:italic}
+h2{font-family:var(--fh);font-weight:700;color:var(--white);margin:0;font-size:1.25rem;line-height:1.25}
+h2 em{font-weight:400;font-style:italic}
+p{margin:0}
+.lede{color:var(--muted);max-width:60ch}
+header{padding-block:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,3vw,2rem)}
+section{padding-block:clamp(1.75rem,4vw,2.75rem);border-top:1px solid var(--line-soft)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;margin-bottom:.4rem}
+.badge{font-family:var(--fu);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.28rem .7rem;border-radius:999px}
+.b-bad{background:rgba(255,145,71,.16);color:#ffc39a}
+.b-ok{background:rgba(127,209,166,.16);color:#a9e5c8}
+.sec-head + p{color:var(--muted);max-width:58ch;margin-bottom:1.4rem}
+
+/* ---------- telefon-ramme: viser mobilopførsel også på desktop ---------- */
+.phone{max-width:390px;margin-inline:auto;overflow:hidden;background:var(--panel);
+  border-radius:18px;border:1px solid var(--line-soft);padding-block:.9rem;padding-inline:1.5rem}
+@media (max-width:520px){
+  .phone{max-width:none;border-radius:0;border-inline:0;margin-inline:calc(clamp(1.25rem,5vw,2.5rem) * -1)}
+}
+
+/* ---------- deres egen CSS, kopieret 1:1 og bundet til .phone ---------- */
+.phone .ff-filter-in{display:flex;flex-direction:column;gap:0;padding-block:0}
+.phone .ff-row{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem 1.25rem;
+  justify-content:space-between;position:relative}
+.phone .ff-row::before{content:"";position:absolute;top:0;bottom:auto;left:0;right:0;z-index:0;
+  pointer-events:none;background:rgba(255,255,255,.02);border:1px solid var(--ff-line);border-right:0;
+  border-radius:999px 0 0 999px;height:2.9rem}
+.phone .ff-row::after{content:"";position:absolute;top:0;bottom:auto;right:0;z-index:1;
+  width:1.5rem;height:2.9rem;pointer-events:none;
+  background:linear-gradient(90deg,rgba(37,44,57,0),rgba(37,44,57,.92));border-radius:0}
+.phone .ff-seg{display:inline-flex;gap:.25rem;padding:.25rem;flex-wrap:nowrap;overflow-x:auto;
+  scrollbar-width:none;-ms-overflow-style:none;
+  width:100%;margin-right:-1rem;padding-left:1.5rem;
+  background:none;border:0;position:relative;z-index:2;scroll-snap-type:x proximity}
+.phone .ff-seg::-webkit-scrollbar{display:none}
+.phone .ff-seg button{font-family:var(--fu);font-size:.87rem;color:var(--muted);background:none;border:0;
+  cursor:pointer;padding:.55rem 1.1rem;border-radius:999px;display:inline-flex;align-items:center;gap:.45rem;
+  white-space:nowrap;scroll-snap-align:start}
+.phone .ff-seg button[aria-pressed="true"]{background:rgba(141,141,255,.16);color:var(--white)}
+.phone .ff-n{font-size:.75rem;color:var(--faint);font-variant-numeric:tabular-nums}
+.phone .ff-seg button[aria-pressed="true"] .ff-n{color:rgba(255,255,255,.7)}
+.phone .ff-right{display:flex;align-items:center;width:100%;flex-wrap:nowrap;gap:.5rem;
+  position:relative;z-index:2}
+.phone .ff-toggle{flex:none;font-family:var(--fu);font-size:.84rem;color:var(--muted);cursor:pointer;
+  background:rgba(255,255,255,.02);border:1px solid var(--ff-line);border-radius:999px;
+  padding:.5rem .85rem;display:inline-flex;align-items:center;gap:.5rem}
+.phone .ff-search{position:relative;display:flex;align-items:center;flex:1 1 120px;min-width:0}
+.phone .ff-search svg{position:absolute;left:.8rem;width:15px;height:15px;color:var(--faint)}
+.phone .ff-search input{width:100%;font-family:inherit;font-size:.85rem;color:var(--white);
+  background:rgba(255,255,255,.03);border:1px solid var(--ff-line);border-radius:999px;
+  padding:.62rem 2rem .62rem 2.2rem}
+.phone .ff-search input::placeholder{color:var(--faint)}
+
+/* ---------- RETTELSEN ---------- */
+.fixed .ff-row{--ff-gutter:1.5rem}
+.fixed .ff-seg{
+  width:auto;
+  flex:1 1 auto;
+  margin-right:calc(var(--ff-gutter) * -1);
+  padding-left:var(--ff-gutter);
+  padding-right:0;
+  scroll-padding-left:var(--ff-gutter);
+}
+.fixed .ff-seg::after{content:"";flex:none;width:var(--ff-gutter)}
+.fixed .ff-row::before{right:calc(var(--ff-gutter) * -1)}
+.fixed .ff-row::after{right:calc(var(--ff-gutter) * -1)}
+
+/* ---------- måleaflæsning ---------- */
+.readout{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;font-family:var(--fu);font-size:.75rem}
+.readout span{padding:.35rem .7rem;border-radius:8px;border:1px solid var(--line-soft);
+  background:rgba(255,255,255,.02);color:var(--muted);font-variant-numeric:tabular-nums}
+.readout b{color:var(--text);font-weight:500}
+.readout .v-ok b{color:var(--ok)} .readout .v-bad b{color:var(--bad)}
+
+/* ---------- kode ---------- */
+.code{position:relative;margin-top:1.25rem;border:1px solid var(--line-soft);border-radius:12px;
+  background:#141821;overflow:hidden}
+.code pre{margin:0;padding:1.1rem 1.2rem;overflow-x:auto;font-family:ui-monospace,Menlo,monospace;
+  font-size:.8rem;line-height:1.7;color:#cfd3de}
+.code .cm{color:var(--faint)}
+.code .pr{color:#a5b0ff}
+.copy{position:absolute;top:.6rem;right:.6rem;font-family:var(--fu);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--line-soft);
+  border-radius:999px;padding:.35rem .8rem;cursor:pointer;transition:color .2s,border-color .2s}
+.copy:hover{color:var(--white);border-color:rgba(141,141,255,.6)}
+@media (max-width:560px){
+  .code{display:flex;flex-direction:column-reverse}
+  .copy{position:static;align-self:flex-end;margin:.6rem .6rem 0}
+}
+ol{margin:.4rem 0 0;padding-left:1.15rem;color:var(--muted)}
+ol li{margin-bottom:.5rem}
+ol b{color:var(--text);font-weight:600}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.88em;background:rgba(255,255,255,.06);
+  padding:.1em .4em;border-radius:4px;color:#cfd3de}
+.foot{color:var(--faint);font-size:.82rem;border-top:1px solid var(--line-soft);
+  margin-top:1rem;padding-block:1.5rem 3.5rem;max-width:64ch}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="kicker">Rettelse · kategoribjælken</p>
+  <h1>“Alle” klistrer til kanten, <em>og bjælken stopper for tidligt</em></h1>
+  <p class="lede">To fejl med hver sin årsag. Begge er reproduceret herunder og rettet med fire linjer CSS.
+  Prøv at swipe i begge bjælker på telefonen.</p>
+</header>
+
+<section>
+  <div class="sec-head"><h2>Sådan er det nu</h2><span class="badge b-bad">Fejlen</span></div>
+  <p>“Alle” står klods op ad kanten, og bjælken slutter 24px inde på skærmen, så det ikke ses, at der er mere.</p>
+  <div class="phone" id="demoNu">
+    <div class="ff-filter"><div class="ff-filter-in"><div class="ff-row">
+      <div class="ff-seg">
+        <button type="button" aria-pressed="true">Alle<span class="ff-n">88</span></button>
+        <button type="button" aria-pressed="false">Video<span class="ff-n">75</span></button>
+        <button type="button" aria-pressed="false">Animation og VFX<span class="ff-n">18</span></button>
+        <button type="button" aria-pressed="false">Foto<span class="ff-n">4</span></button>
+      </div>
+      <div class="ff-right">
+        <button class="ff-toggle" type="button">Type<span class="ff-n">20</span></button>
+        <div class="ff-search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Søg efter produktion" aria-label="Søg">
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+  <div class="readout" id="readNu"></div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Med rettelsen</h2><span class="badge b-ok">Rettet</span></div>
+  <p>“Alle” får samme afstand til kanten som Type-knappen nedenunder, og knapperne løber ud over skærmkanten.</p>
+  <div class="phone fixed" id="demoFix">
+    <div class="ff-filter"><div class="ff-filter-in"><div class="ff-row">
+      <div class="ff-seg">
+        <button type="button" aria-pressed="true">Alle<span class="ff-n">88</span></button>
+        <button type="button" aria-pressed="false">Video<span class="ff-n">75</span></button>
+        <button type="button" aria-pressed="false">Animation og VFX<span class="ff-n">18</span></button>
+        <button type="button" aria-pressed="false">Foto<span class="ff-n">4</span></button>
+      </div>
+      <div class="ff-right">
+        <button class="ff-toggle" type="button">Type<span class="ff-n">20</span></button>
+        <div class="ff-search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Søg efter produktion" aria-label="Søg">
+        </div>
+      </div>
+    </div></div></div>
+  </div>
+  <div class="readout" id="readFix"></div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Hvorfor <em>det sker</em></h2></div>
+  <ol>
+    <li><b>Venstre:</b> <code>scroll-snap-type</code> på bjælken og <code>scroll-snap-align:start</code> på
+    knapperne får browseren til at snappe første knap helt op til scroll-kanten — den scroller altså forbi
+    <code>padding-left</code> allerede ved indlæsning. Måles som <code>scrollLeft: 24</code> uden at nogen har rørt siden.
+    <code>scroll-padding-left</code> fortæller snap-punktet, at der skal være plads.</li>
+    <li><b>Højre:</b> <code>.ff-seg</code> har både <code>width:100%</code> og <code>margin-right:-1rem</code>.
+    Når bredden er låst til 100%, udvider den negative margin ikke elementet — den flytter kun naboer.
+    Bjælken bliver derfor stående ved containerens kant. Med <code>width:auto</code> virker den negative margin.</li>
+  </ol>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Koden</h2></div>
+  <p>Tilføjes i <code>filter-ui.css</code> inde i den eksisterende <code>@media (max-width:600px)</code>-blok.
+  Erstat de tre linjer i <code>.ff-seg</code>, der sætter <code>width</code>, <code>margin-right</code> og
+  <code>padding-left</code>.</p>
+  <div class="code">
+    <button class="copy" id="copyBtn" type="button">Kopiér</button>
+<pre id="cssCode"><span class="cm">/* Kategoribjælken: luft til venstre + løb ud over højre skærmkant */</span>
+.ff-row{ <span class="pr">--ff-gutter</span>:1.5rem }   <span class="cm">/* = sidens kant på mobil (24px) */</span>
+
+.ff-seg{
+  width:auto;                 <span class="cm">/* var 100% — låste bredden */</span>
+  flex:1 1 auto;
+  margin-right:calc(<span class="pr">var(--ff-gutter)</span> * -1);
+  padding-left:<span class="pr">var(--ff-gutter)</span>;
+  padding-right:0;
+  scroll-padding-left:<span class="pr">var(--ff-gutter)</span>;  <span class="cm">/* så snap ikke æder paddingen */</span>
+}
+
+<span class="cm">/* afstand efter sidste knap, når man har scrollet i bund */</span>
+.ff-seg::after{ content:""; flex:none; width:<span class="pr">var(--ff-gutter)</span> }
+
+<span class="cm">/* rammen og fade-laget skal med ud til kanten */</span>
+.ff-row::before{ right:calc(<span class="pr">var(--ff-gutter)</span> * -1) }
+.ff-row::after { right:calc(<span class="pr">var(--ff-gutter)</span> * -1) }</pre>
+  </div>
+</section>
+
+<p class="foot">Testet mod final.dk/produktioner/ i mobilvisning 390 × 844.
+Før: første knap ved x=24, bjælken slutter ved x=366, <code>scrollLeft</code> 24 ved indlæsning.
+Efter: første knap ved x=48, bjælken slutter ved x=390, <code>scrollLeft</code> 0.
+<code>--ff-gutter</code> skal matche sidens kant på mobil — er den ikke 24px hos jer, rettes kun den ene værdi.</p>
+</div>
+
+<script>
+function measure(root, out){
+  const seg = root.querySelector('.ff-seg');
+  const btn = seg.querySelector('button');
+  const box = root.getBoundingClientRect();
+  const b = btn.getBoundingClientRect();
+  const s = seg.getBoundingClientRect();
+  const venstre = Math.round(b.left - box.left);
+  const hoejre  = Math.round(box.right - s.right);
+  const ok = v => v ? 'v-ok' : 'v-bad';
+  out.innerHTML =
+    `<span class="${ok(venstre>=40)}">Kant → “Alle”: <b>${venstre}px</b></span>` +
+    `<span class="${ok(hoejre<=0)}">Bjælken slutter <b>${Math.max(hoejre,0)}px</b> fra kanten</span>` +
+    `<span class="${ok(seg.scrollLeft===0)}">scrollLeft ved start: <b>${Math.round(seg.scrollLeft)}</b></span>`;
+}
+function run(){
+  measure(document.getElementById('demoNu'),  document.getElementById('readNu'));
+  measure(document.getElementById('demoFix'), document.getElementById('readFix'));
+}
+addEventListener('load', () => setTimeout(run, 120));
+addEventListener('resize', run);
+document.querySelectorAll('.ff-seg').forEach(s => s.addEventListener('scroll', () => {
+  clearTimeout(window._t); window._t = setTimeout(run, 120);
+}, {passive:true}));
+
+document.getElementById('copyBtn').addEventListener('click', async e => {
+  const txt = document.getElementById('cssCode').innerText;
+  try { await navigator.clipboard.writeText(txt); e.target.textContent = 'Kopieret'; }
+  catch { e.target.textContent = 'Markér og kopiér'; }
+  setTimeout(() => { e.target.textContent = 'Kopiér'; }, 1800);
+});
+</script>
