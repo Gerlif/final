@@ -118,7 +118,7 @@ section{padding:44px 0}
 
 /* ---- toggle ---- */
 .switch{
-  display:inline-flex;padding:3px;gap:3px;border-radius:999px;
+  display:inline-flex;flex-wrap:wrap;padding:3px;gap:3px;border-radius:999px;
   background:var(--surface-2);border:1px solid var(--line-soft);
 }
 .switch button{
@@ -180,6 +180,39 @@ section{padding:44px 0}
 }
 .height-col{display:flex;flex-direction:column}
 .thumb iframe{border:0;transform-origin:top left;display:block}
+
+/* ---- højdestige ---- */
+.ladder{margin-top:26px;display:grid;gap:9px}
+.rung{display:grid;grid-template-columns:150px 1fr 92px;gap:14px;align-items:center}
+.rung .name{font-size:.85rem;color:var(--ink-soft)}
+.rung .track{height:22px;background:var(--surface-2);border-radius:4px;overflow:hidden;border:1px solid var(--line-soft)}
+.rung .fill{height:100%;background:var(--accent-soft);border-right:2px solid var(--accent);transition:width .5s cubic-bezier(.2,.7,.3,1)}
+.rung .val{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.78rem;
+  text-align:right;color:var(--ink);font-variant-numeric:tabular-nums;
+}
+.rung.base .name{color:var(--ink-faint)}
+.rung.base .fill{background:var(--line-soft);border-right-color:var(--ink-faint)}
+.rung.on .name{color:var(--ink);font-weight:500}
+.rung.on .fill{background:var(--good-soft);border-right-color:var(--good)}
+.rung .delta{font-size:.72rem;color:var(--ink-faint);margin-left:8px}
+@media (max-width:640px){
+  .rung{grid-template-columns:1fr 76px;gap:8px}
+  .rung .track{grid-column:1 / -1;order:3}
+}
+
+/* ---- fordele/ulemper ---- */
+.tradeoffs{margin-top:26px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.tro{
+  border:1px solid var(--line-soft);border-radius:10px;padding:15px 17px;
+  background:var(--surface);box-shadow:var(--shadow);
+}
+.tro h3{font-size:.95rem;margin-bottom:8px}
+.tro p{font-size:.85rem;color:var(--ink-soft);margin-bottom:6px}
+.tro .con{color:var(--ink-faint)}
+.tro .con::before{content:"− ";color:var(--ink-faint)}
+.tro p.pro::before{content:"+ ";color:var(--good)}
+.tro.is-on{border-color:color-mix(in srgb, var(--accent) 45%, transparent);background:var(--accent-soft)}
 
 /* ---- liste ---- */
 .changes{display:grid;gap:0;border-top:1px solid var(--line-soft)}
@@ -258,13 +291,13 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
   <p class="lede">
     Services-blokken er den længste sektion på forsiden. Kortene bruger mest plads på luft:
     et 250 px billede, 50 px topmargin, fuld beskrivelse og en “Læs mere”-linje pr. kort — gange seks.
-    Herunder ligger den nuværende blok og en kompakt udgave side om side, bygget på jeres egne
+    Herunder ligger den nuværende blok og fire strammere udgaver, bygget på jeres egne
     billeder, fonte og farver. Alt er målt i browseren, ikke skønnet.
   </p>
   <p class="meta">
     <span>6 kort + 23 chips</span>
     <span>Desktop 1240 px &amp; mobil 390 px</span>
-    <span>Ingen tekst fjernet på desktop</span>
+    <span>4 desktop-varianter, samme mobil</span>
     <span>Chip-rækken er uændret</span>
   </p>
 </header>
@@ -296,6 +329,37 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     <div class="readout" id="d-read">måler …</div>
   </div>
   <div class="stage stage-scale" id="d-stage"><iframe id="d-frame" title="Desktop-visning"></iframe></div>
+</section>
+
+<section class="col" id="mere">
+  <div class="sec-head">
+    <h2>Hvor stramt kan desktop blive?</h2>
+    <p>Tre trin videre fra den kompakte udgave. Alle tre rører kun desktop —
+       mobilen er den samme i dem alle. Skift mellem dem og se kortgitteret blive målt live.</p>
+  </div>
+  <div class="bar">
+    <div class="switch" role="group" aria-label="Vælg variant">
+      <button type="button" data-view="v" data-mode="new" aria-pressed="false">A · Kompakt</button>
+      <button type="button" data-view="v" data-mode="tight" aria-pressed="true">B · Strammere</button>
+      <button type="button" data-view="v" data-mode="overlay" aria-pressed="false">C · Titel på billedet</button>
+      <button type="button" data-view="v" data-mode="band" aria-pressed="false">D · Ét bånd</button>
+    </div>
+    <div class="readout" id="v-read">måler …</div>
+  </div>
+  <div class="stage stage-scale" id="v-stage"><iframe id="v-frame" title="Variantvisning"></iframe></div>
+
+  <div class="ladder" id="ladder" aria-label="Kortgitterets højde pr. variant"></div>
+
+  <div class="tradeoffs" id="tradeoffs"></div>
+
+  <p class="note">
+    <b>Mit bud: B.</b> Chip-rækken lige under kortene er allerede en menu med 23 links.
+    Tager man beskrivelsen af kortene (C og D), bliver de seks kort en menu til —
+    så står der to menuer oven på hinanden, og kortene holder op med at sælge noget.
+    B fjerner <span id="b-vs-a">…</span> mere højde end A og beholder de to linjer,
+    der gør forskellen på et link og et argument. D er sjov, men
+    <span id="band-w">…</span> pr. kort er smallere end de fleste af jeres titler har godt af.
+  </p>
 </section>
 
 <section class="col" id="mobil">
@@ -364,12 +428,20 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     <pre id="code-html"></pre>
   </div>
 
-  <div class="code-wrap">
+  <div class="code-wrap" style="margin-bottom:20px">
     <div class="code-head">
-      <span class="fname">services-kompakt.css</span>
+      <span class="fname">services-kompakt.css — grundlaget (A)</span>
       <button class="copy" type="button" data-copy="css">Kopiér</button>
     </div>
     <pre id="code-css"></pre>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-head">
+      <span class="fname">tilvalg — læg B, C eller D efter CSS’en ovenfor</span>
+      <button class="copy" type="button" data-copy="var">Kopiér</button>
+    </div>
+    <pre id="code-var"></pre>
   </div>
 
   <p class="note">
@@ -555,6 +627,59 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     '}'
   ].join('');
 
+
+  /* ---------- Tre trin strammere på desktop ----------
+     Alle tre arver den kompakte CSS ovenfor og ændrer kun desktop-delen.
+     Mobil-reglerne (max-width:600px) er de samme i alle varianter. */
+
+  var V_TIGHT = [
+    '/* B · Strammere: filmformat på billedet, tættere sats */',
+    '@media (min-width:1025px){',
+    '  .svc-grid{gap:16px}',
+    '  .svc-media{aspect-ratio:21/9}',
+    '  .svc-body{padding:14px 16px 16px;gap:4px}',
+    '  .svc-title{font-size:19px}',
+    '  .svc-desc{font-size:14px;line-height:1.5}',
+    '}'
+  ].join('\n');
+
+  var V_OVERLAY = [
+    '/* C · Titlen ind på billedet — samme greb som på mobil */',
+    '@media (min-width:1025px){',
+    '  .svc-grid{gap:16px}',
+    '  .svc{background:none;border:0}',
+    '  .svc:hover{transform:translateY(-3px)}',
+    '  .svc-media{aspect-ratio:16/9;border-radius:8px}',
+    '  .svc-media::after{',
+    '    content:"";position:absolute;inset:0;',
+    '    background:linear-gradient(to top,rgba(16,18,25,.92) 0%,rgba(16,18,25,.45) 44%,rgba(16,18,25,0) 80%);',
+    '  }',
+    '  .svc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:16px 18px;gap:0}',
+    '  .svc-title{font-size:20px}',
+    '  .svc-desc{display:none}',
+    '  .svc-arrow{top:12px;right:12px}',
+    '}'
+  ].join('\n');
+
+  var V_BAND = [
+    '/* D · Ét bånd: alle seks i én række */',
+    '@media (min-width:1025px){',
+    '  .svc-grid{grid-template-columns:repeat(6,1fr);gap:10px}',
+    '  .svc{background:none;border:0}',
+    '  .svc:hover{transform:translateY(-3px)}',
+    '  .svc-media{aspect-ratio:4/3;border-radius:8px}',
+    '  .svc-media::after{',
+    '    content:"";position:absolute;inset:0;',
+    '    background:linear-gradient(to top,rgba(16,18,25,.94) 0%,rgba(16,18,25,.5) 46%,rgba(16,18,25,0) 82%);',
+    '  }',
+    '  .svc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:10px 12px;gap:0}',
+    '  .svc-title{font-size:14px;line-height:1.2}',
+    '  .svc-desc,.svc-arrow{display:none}',
+    '}'
+  ].join('\n');
+
+  var VARIANTS = { 'new':'', tight:V_TIGHT, overlay:V_OVERLAY, band:V_BAND };
+
   var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"'
     + ' stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
     + '<line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
@@ -595,11 +720,13 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     }).join('');
   }
 
-  function doc(mode){
+  function doc(mode, variant){
     var grid = mode === 'now'
       ? '<div class="now-grid">' + cardsNow() + '</div>'
       : '<div class="svc-grid">' + cardsNew() + '</div>';
-    var css = BASE + (mode === 'now' ? CSS_NOW : CSS_NEW + CSS_NEW_EXTRA);
+    var css = BASE + (mode === 'now'
+      ? CSS_NOW
+      : CSS_NEW + CSS_NEW_EXTRA + (VARIANTS[variant] || ''));
     return '<!doctype html><html lang="da"><head><meta charset="utf-8">'
       + '<meta name="viewport" content="width=device-width, initial-scale=1">'
       + FONTS + '<style>' + css + '</style></head><body>'
@@ -624,8 +751,19 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
       + '</body></html>';
   }
 
-  var DOCS = { now: doc('now'), 'new': doc('new') };
-  var measured = { d:{}, m:{}, g:{} };
+  var DOCS = {
+    now:     doc('now'),
+    'new':   doc('new', 'new'),
+    tight:   doc('new', 'tight'),
+    overlay: doc('new', 'overlay'),
+    band:    doc('new', 'band')
+  };
+  var measured = { d:{}, m:{}, v:{}, g:{}, w:{} };
+
+  function cardW(d){
+    var c = d && d.querySelector('.svc, .now-card');
+    return c ? Math.round(c.getBoundingClientRect().width) : 0;
+  }
 
   function gridH(d){
     var g = d && (d.querySelector('.svc-grid') || d.querySelector('.now-grid'));
@@ -672,14 +810,16 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
   var dFrame = document.getElementById('d-frame');
   var dMode = 'new';
 
-  function fitDesktop(h){
-    var scale = Math.min(1, dStage.clientWidth / DW);
-    dFrame.style.width = DW + 'px';
-    dFrame.style.height = h + 'px';
-    dFrame.style.transformOrigin = 'top left';
-    dFrame.style.transform = 'scale(' + scale + ')';
-    dStage.style.height = Math.round(h * scale) + 'px';
+  function fitStage(stage, frame, h){
+    var scale = Math.min(1, stage.clientWidth / DW);
+    frame.style.width = DW + 'px';
+    frame.style.height = h + 'px';
+    frame.style.transformOrigin = 'top left';
+    frame.style.transform = 'scale(' + scale + ')';
+    stage.style.height = Math.round(h * scale) + 'px';
   }
+
+  function fitDesktop(h){ fitStage(dStage, dFrame, h); }
 
   function showDesktop(mode){
     dMode = mode;
@@ -689,6 +829,85 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
       fitDesktop(h);
       updateReadouts();
     });
+  }
+
+  /* ---------- varianter på desktop ---------- */
+  var vStage = document.getElementById('v-stage');
+  var vFrame = document.getElementById('v-frame');
+  var vMode = 'tight';
+
+  var V_LABEL = {
+    'new':   'A · Kompakt',
+    tight:   'B · Strammere',
+    overlay: 'C · Titel på billedet',
+    band:    'D · Ét bånd'
+  };
+  var V_ORDER = ['new', 'tight', 'overlay', 'band'];
+
+  var V_TRADE = {
+    'new': ['Billede, titel og to linjer — kortet argumenterer stadig for sig selv.',
+            'Fylder mest af de fire.'],
+    tight: ['Filmformat på billedet klæder et produktionsselskab.',
+            'Beholder de to linjer tekst.',
+            'Billedet får mindre plads at virke på.'],
+    overlay: ['Halverer kortets tekstblok — kun titlen står tilbage.',
+              'Samme greb som på mobil, så blokken læses som ét system.',
+              'Uden beskrivelse ligner kortene chip-rækken nedenunder.'],
+    band: ['Alle seks på én skærmlinje — hele udbuddet på én gang.',
+           '197 px pr. kort: lange titler som “Employer Branding” knækker.',
+           'Læser mere som en menu end som seks services.']
+  };
+
+  function showVariant(mode){
+    vMode = mode;
+    load(vFrame, mode, function(h, d){
+      measured.v[mode] = h;
+      measured.g[mode] = gridH(d);
+      measured.w[mode] = cardW(d);
+      fitStage(vStage, vFrame, h);
+      renderLadder();
+      renderTrade();
+    });
+  }
+
+  function renderLadder(){
+    var g = measured.g;
+    if (!g.now) return;
+    var rows = [['now', 'Nu']].concat(V_ORDER.map(function(k){ return [k, V_LABEL[k]]; }));
+    var max = g.now;
+    var html = rows.map(function(r){
+      var k = r[0], h = g[k];
+      if (!h) return '';
+      var cls = k === 'now' ? 'rung base' : (k === vMode ? 'rung on' : 'rung');
+      var d = k === 'now' ? '' : '<span class="delta">−' + pct(g.now, h) + ' %</span>';
+      return '<div class="' + cls + '">'
+        + '<div class="name">' + r[1] + '</div>'
+        + '<div class="track"><div class="fill" style="width:' + Math.round(h / max * 100) + '%"></div></div>'
+        + '<div class="val">' + fmt(h) + ' px' + d + '</div></div>';
+    }).join('');
+    document.getElementById('ladder').innerHTML = html;
+    if (g['new'] && g.tight) {
+      document.getElementById('b-vs-a').textContent = pct(g['new'], g.tight) + ' %';
+    }
+    if (measured.w.band) {
+      document.getElementById('band-w').textContent = 'ca. ' + measured.w.band + ' px';
+    }
+    if (g[vMode]) {
+      document.getElementById('v-read').textContent =
+        'kortgitter: nu ' + fmt(g.now) + ' px  →  ' + fmt(g[vMode]) + ' px   ·   −' + pct(g.now, g[vMode]) + ' %';
+    }
+  }
+
+  function renderTrade(){
+    document.getElementById('tradeoffs').innerHTML = V_ORDER.map(function(k){
+      var lines = V_TRADE[k].map(function(t, i){
+        var isCon = (k === 'new' && i === 1) || (k === 'tight' && i === 2)
+                 || (k === 'overlay' && i === 2) || (k === 'band' && i >= 1);
+        return '<p class="' + (isCon ? 'con' : 'pro') + '">' + t + '</p>';
+      }).join('');
+      return '<div class="tro' + (k === vMode ? ' is-on' : '') + '">'
+        + '<h3>' + V_LABEL[k] + '</h3>' + lines + '</div>';
+    }).join('');
   }
 
   /* ---------- mobil 1:1 ---------- */
@@ -773,7 +992,9 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
         document.querySelectorAll('.switch button[data-view="' + view + '"]'),
         function(o){ o.setAttribute('aria-pressed', String(o === b)); }
       );
-      if (view === 'd') showDesktop(mode); else showMobile(mode);
+      if (view === 'd') showDesktop(mode);
+      else if (view === 'v') showVariant(mode);
+      else showMobile(mode);
     });
   });
 
@@ -833,14 +1054,17 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     '<div class="svc-grid"> … </div>'
   ].join('\n');
 
-  var codeHtmlEl = document.getElementById('code-html');
-  var codeCssEl = document.getElementById('code-css');
-  codeHtmlEl.textContent = HTML_SNIPPET;
-  codeCssEl.textContent = CSS_NEW;
+  var VAR_SNIPPET = [V_TIGHT, '', V_OVERLAY, '', V_BAND].join('\n');
+
+  document.getElementById('code-html').textContent = HTML_SNIPPET;
+  document.getElementById('code-css').textContent = CSS_NEW;
+  document.getElementById('code-var').textContent = VAR_SNIPPET;
 
   Array.prototype.forEach.call(document.querySelectorAll('.copy'), function(b){
     b.addEventListener('click', function(){
-      var txt = b.dataset.copy === 'html' ? HTML_SNIPPET : CSS_NEW;
+      var txt = b.dataset.copy === 'html' ? HTML_SNIPPET
+              : b.dataset.copy === 'var'  ? VAR_SNIPPET
+              : CSS_NEW;
       navigator.clipboard.writeText(txt).then(function(){
         var old = b.textContent; b.textContent = 'Kopieret';
         setTimeout(function(){ b.textContent = old; }, 1600);
@@ -850,20 +1074,27 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
 
   /* ---------- start ---------- */
   showDesktop('new');
+  showVariant('tight');
   showMobile('new');
   thumb('t-now', 'now');
   thumb('t-new', 'new');
 
-  /* mål også den skjulte desktop-variant, så tallene er komplette */
+  /* mål også de varianter, der ikke vises lige nu, så stigen er komplet */
   (function(){
-    var hidden = document.createElement('iframe');
-    hidden.setAttribute('aria-hidden', 'true');
-    hidden.style.cssText = 'position:absolute;left:-9999px;top:0;width:' + DW + 'px;height:200px;border:0;visibility:hidden';
-    document.body.appendChild(hidden);
-    load(hidden, 'now', function(h, d){
-      measured.d.now = h;
-      measured.g.now = gridH(d);
-      updateReadouts();
+    ['now', 'new', 'overlay', 'band'].forEach(function(mode){
+      var hidden = document.createElement('iframe');
+      hidden.setAttribute('aria-hidden', 'true');
+      hidden.setAttribute('tabindex', '-1');
+      hidden.style.cssText = 'position:absolute;left:-9999px;top:0;width:' + DW
+        + 'px;height:200px;border:0;visibility:hidden';
+      document.body.appendChild(hidden);
+      load(hidden, mode, function(h, d){
+        if (mode === 'now') measured.d.now = h;
+        measured.g[mode] = gridH(d);
+        measured.w[mode] = cardW(d);
+        renderLadder();
+        updateReadouts();
+      });
     });
   })();
 
@@ -872,6 +1103,7 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     clearTimeout(rt);
     rt = setTimeout(function(){
       if (measured.d[dMode]) fitDesktop(measured.d[dMode]);
+      if (measured.v[vMode]) fitStage(vStage, vFrame, measured.v[vMode]);
       layoutThumbs();
     }, 140);
   });
