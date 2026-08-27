@@ -319,7 +319,7 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
   <div class="sec-head">
     <h2>Desktop</h2>
     <p>Tre kolonner som nu. Billedet får fast 16:9, teksten to linjer, og “Læs mere” bliver til en pil,
-       der glider ind på hover — så forsvinder en hel linje pr. kort uden at kortet mister sit kald til handling.</p>
+       der glider ind på hover — så forsvinder en hel linje pr. kort uden at kortet mister sit kald til handling. Hover løfter kortet; billedet står stille.</p>
   </div>
   <div class="bar">
     <div class="switch" role="group" aria-label="Vælg version">
@@ -564,15 +564,13 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     '  transition:transform .35s cubic-bezier(.2,.7,.3,1), border-color .35s ease;',
     '}',
     '.svc:hover{',
-    '  transform:translateY(-4px);',
+    '  transform:translateY(-3px);',
     '  border-color:rgba(141,141,255,.45);',
     '}',
     '.svc:focus-visible{outline:2px solid #8D8DFF;outline-offset:3px}',
     '',
     '.svc-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#14161C}',
-    '.svc-media img{width:100%;height:100%;object-fit:cover;display:block;',
-    '  transition:transform .5s cubic-bezier(.2,.7,.3,1)}',
-    '.svc:hover .svc-media img{transform:scale(1.05)}',
+    '.svc-media img{width:100%;height:100%;object-fit:cover;display:block}',
     '',
     '/* Pilen erstatter "LÆS MERE"-linjen */',
     '.svc-arrow{',
@@ -1006,7 +1004,7 @@ footer{padding:56px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     ['Titel', '26 px', '<b>20 px</b> — stadig Libre Baskerville 700'],
     ['Beskrivelse', '17 px, alle linjer (3–5 pr. kort)', '15 px, <b>klippet til 2 linjer</b>'],
     ['“Læs mere”', 'Egen linje med ikon, ~44 px', '<b>Pil i hjørnet</b> på hover — hele kortet er link'],
-    ['Hover', 'scale(1.05) — kortet vokser ud over naboen', '<b>Løft 4 px</b> + billedet zoomer let'],
+    ['Hover', 'scale(1.05) — kortet vokser ud over naboen', '<b>Løft 3 px</b> — billedet står stille'],
     ['Kolonner', '3 → 1 allerede ved 1024 px', '3 → <b>2</b> ved 1024 → 2 på mobil']
   ];
   var CHANGES_MOBILE = [
