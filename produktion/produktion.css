@@ -1,0 +1,294 @@
+/* ============================================================
+   Produktionssiden — afspillerlayout
+   Alt er prefikset .fp-, så intet kolliderer med det bestående.
+   ============================================================ */
+
+.fp-page{
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 32px 24px 0;
+}
+
+.fp-grid{
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 380px;
+	gap: 40px;
+	align-items: start;
+}
+
+/* --- Afspilleren --- */
+.fp-player{
+	border-radius: 8px;
+	overflow: hidden;
+	background: #000;
+}
+.fp-player video{
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: min(760px, 80vh);
+	object-fit: contain;
+	background: #000;
+}
+
+/* --- Titel --- */
+.fp-title{
+	font-family: "Libre Baskerville", Georgia, serif;
+	font-weight: 700;
+	font-size: clamp(1.45rem, 1.1rem + 1.1vw, 2.05rem);
+	line-height: 1.2;
+	color: #fff;
+	margin: 18px 0 0;
+	text-transform: none;
+	text-wrap: balance;
+}
+.fp-sub{
+	font-size: 1.05rem;
+	line-height: 1.4;
+	color: rgba(217,217,217,.55);
+	margin: .4rem 0 0;
+}
+
+/* --- Afsenderrække --- */
+.fp-sender{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin: 18px 0 0;
+}
+.fp-who{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 0;
+}
+.fp-mark{
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	flex: none;
+	background: #1D2028;
+	border: 1px solid rgba(217,217,217,.12);
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+}
+.fp-mark img{
+	width: 26px;
+	height: auto;
+	display: block;
+}
+.fp-lines{
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.fp-name{
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .95rem;
+	color: #fff;
+	line-height: 1.25;
+}
+.fp-role{
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .78rem;
+	color: rgba(217,217,217,.45);
+	line-height: 1.3;
+}
+.fp-role a{
+	color: rgba(217,217,217,.72);
+	text-decoration: underline;
+	text-decoration-color: rgba(217,217,217,.22);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+	transition: color .2s ease, text-decoration-color .2s ease;
+}
+.fp-role a:hover{
+	color: #8D8DFF;
+	text-decoration-color: #8D8DFF;
+}
+
+/* --- Kategori-chips --- */
+.fp-chips{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.fp-chip{
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 14px;
+	border: 1px solid rgba(217,217,217,.14);
+	border-radius: 8px;
+	color: rgba(217,217,217,.74);
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .83rem;
+	line-height: 1.2;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: color .28s, border-color .28s, background-color .28s;
+}
+.fp-chip:hover{
+	color: #fff;
+	border-color: #8D8DFF;
+	background: rgba(141,141,255,.08);
+}
+
+/* --- Beskrivelsen --- */
+.fp-desc{
+	background: #313845;              /* lysere end sidens #252C39 */
+	border: 1px solid rgba(255,255,255,.06);
+	border-radius: 8px;
+	padding: 18px 20px;
+	margin: 20px 0 0;
+}
+.fp-desc-body{
+	position: relative;
+	overflow: hidden;
+	transition: max-height .3s ease;
+}
+.fp-desc-body p{
+	margin: 0 0 1em;
+	color: rgba(217,217,217,.86);
+	font-size: .98rem;
+	line-height: 1.7;
+}
+.fp-desc-body p:last-child{
+	margin-bottom: 0;
+}
+.fp-desc.is-clamped .fp-desc-body{
+	max-height: 7rem;
+}
+.fp-desc.is-clamped .fp-desc-body::after{
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 2.6rem;
+	background: linear-gradient(to bottom, rgba(49,56,69,0), #313845);
+}
+.fp-desc-more{
+	display: none;
+	margin-top: 10px;
+	background: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .85rem;
+	color: rgba(217,217,217,.72);
+}
+.fp-desc-more:hover{ color: #fff; }
+.fp-desc.has-more .fp-desc-more{ display: inline-block; }
+.fp-desc-empty{
+	margin: 0;
+	color: rgba(217,217,217,.45);
+	font-size: .95rem;
+}
+.fp-credits{
+	margin: 14px 0 0;
+	padding-top: 14px;
+	border-top: 1px solid rgba(217,217,217,.08);
+	font-size: .88rem;
+	color: rgba(217,217,217,.5);
+}
+
+.fp-extra{ margin: 28px 0 0; }
+
+/* --- Sidepanelet --- */
+.fp-rail{
+	position: sticky;
+	top: 24px;
+}
+.fp-rail-h{
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-weight: 500;
+	font-size: .78rem;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	color: rgba(217,217,217,.45);
+	margin: 0 0 14px;
+}
+.fp-ri{
+	display: grid;
+	grid-template-columns: 168px minmax(0, 1fr);
+	gap: 12px;
+	padding: 8px;
+	margin: 0 -8px;
+	border-radius: 8px;
+	text-decoration: none;
+	color: inherit;
+	transition: background-color .25s ease;
+}
+.fp-ri:hover{ background: rgba(217,217,217,.05); }
+.fp-ri-media{
+	position: relative;
+	display: block;
+	aspect-ratio: 16 / 9;
+	border-radius: 6px;
+	overflow: hidden;
+	background: #000;
+}
+.fp-ri-media img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.fp-ri-text{
+	display: block;
+	min-width: 0;
+}
+.fp-ri-t{
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .88rem;
+	line-height: 1.35;
+	color: #fff;
+}
+.fp-ri-k{
+	display: block;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .78rem;
+	color: rgba(217,217,217,.45);
+	margin-top: 3px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.fp-rail-all{
+	display: inline-block;
+	margin-top: 16px;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .85rem;
+	color: rgba(217,217,217,.6);
+	text-decoration: none;
+	transition: color .2s ease;
+}
+.fp-rail-all:hover{ color: #fff; }
+
+/* --- Tablet: panelet falder ned under filmen --- */
+@media (max-width: 1100px){
+	.fp-grid{ grid-template-columns: 1fr; gap: 44px; }
+	.fp-rail{ position: static; }
+	.fp-rail-list{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 20px; }
+}
+
+/* --- Mobil --- */
+@media (max-width: 600px){
+	.fp-page{ padding: 18px 20px 0; }
+	.fp-player{ margin: 0 -20px; border-radius: 0; }
+	.fp-title{ font-size: 1.25rem; margin-top: 14px; }
+	.fp-sub{ font-size: .98rem; }
+	.fp-chips{ width: 100%; }
+	.fp-desc{ padding: 15px 16px; margin-top: 16px; }
+	.fp-rail-list{ grid-template-columns: 1fr; gap: 4px; }
+	.fp-ri{ grid-template-columns: 140px minmax(0, 1fr); gap: 10px; }
+	.fp-ri-t{ font-size: .85rem; }
+}

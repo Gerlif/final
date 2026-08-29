@@ -1,0 +1,125 @@
+<div class="fp-page">
+	<div class="fp-grid">
+
+		<div class="fp-main">
+
+			[if video-produktion]
+			<div class="fp-player">
+				<video controls controlsList="nodownload" preload="metadata" poster="{@post_thumbnail_url.large}">
+					<source src="{@video_fil}" type="video/mp4">
+					Din browser understøtter ikke video.
+				</video>
+			</div>
+			[else]
+				[if animations-produktion]
+				<div class="fp-player">
+					<video controls controlsList="nodownload" preload="metadata" poster="{@post_thumbnail_url.large}">
+						<source src="{@video_fil}" type="video/mp4">
+						Din browser understøtter ikke video.
+					</video>
+				</div>
+				[/if]
+			[/if]
+
+			[if titel]
+			<h1 class="fp-title notranslate">{@titel}</h1>
+			[else]
+			<h1 class="fp-title notranslate">{@post_title}</h1>
+			[/if]
+
+			[if undertitel]
+			<p class="fp-sub notranslate">{@undertitel}</p>
+			[/if]
+
+			<div class="fp-sender">
+
+				<span class="fp-who">
+					<span class="fp-mark">
+						<img src="https://final.dk/wp-content/uploads/2023/08/Final-Logo@4x.webp" alt="Final Film" />
+					</span>
+					<span class="fp-lines">
+						<span class="fp-name">Final Film</span>
+						<span class="fp-role notranslate">[if klient]Produceret for [if klient_link]<a href="{@klient_link}" target="_blank" rel="noopener">{@klient}</a>[else]{@klient}[/if][/if][if klient_2_link] og <a href="{@klient_2_link}" target="_blank" rel="noopener">{@klient_2}</a>[/if][if bureau] &nbsp;·&nbsp; Bureau [if bureau_link]<a href="{@bureau_link}" target="_blank" rel="noopener">{@bureau}</a>[else]{@bureau}[/if][/if]</span>
+					</span>
+				</span>
+
+				<span class="fp-chips">
+					[if brandingfilm]<a class="fp-chip" href="https://final.dk/service/videoproduktion/brandingfilm/">Brandingfilm</a>[/if]
+					[if employer_branding]<a class="fp-chip" href="https://final.dk/service/videoproduktion/employer-branding/">Employer Branding</a>[/if]
+					[if produktvideo]<a class="fp-chip" href="https://final.dk/service/videoproduktion/produktvideo/">Produktvideo</a>[/if]
+					[if biografreklame]<a class="fp-chip" href="https://final.dk/service/videoproduktion/biografreklame/">Biografreklame</a>[/if]
+					[if rekrutteringsvideo]<a class="fp-chip" href="https://final.dk/service/videoproduktion/rekrutteringsvideo/">Rekrutteringsvideo</a>[/if]
+					[if explainervideo]<a class="fp-chip" href="https://final.dk/service/videoproduktion/explainervideo/">Explainervideo</a>[/if]
+					[if animation]<a class="fp-chip" href="https://final.dk/service/videoproduktion/animation/">Animation</a>[/if]
+					[if vfx]<a class="fp-chip" href="https://final.dk/service/videoproduktion/vfx/">VFX</a>[/if]
+					[if drone]<a class="fp-chip" href="https://final.dk/service/droneoptagelser/">Droneoptagelser</a>[/if]
+					[if beauty]<a class="fp-chip" href="https://final.dk/service/videoproduktion/beauty-og-fashion-videoproduktion/">Beauty og Fashion</a>[/if]
+					[if event]<a class="fp-chip" href="https://final.dk/service/videoproduktion/event-og-stemningsfilm/">Event- og stemningsfilm</a>[/if]
+					[if case]<a class="fp-chip" href="https://final.dk/service/videoproduktion/casevideo/">Casevideo</a>[/if]
+					[if some]<a class="fp-chip" href="https://final.dk/service/videoproduktion/some-content-produktion/">SoMe Content</a>[/if]
+					[if foto]<a class="fp-chip" href="https://final.dk/service/fotografering/">Fotografi</a>[/if]
+					[if interview]<a class="fp-chip" href="https://final.dk/service/videoproduktion/professionelle-interviewvideo/">Interview</a>[/if]
+					[if travel]<a class="fp-chip" href="https://final.dk/service/videoproduktion/travel/">Travel</a>[/if]
+				</span>
+
+			</div>
+
+			<div class="fp-desc" id="fp-desc">
+				[if beskrivelse]
+				<div class="fp-desc-body" id="fp-desc-body">{@beskrivelse}</div>
+				<button class="fp-desc-more" type="button" id="fp-desc-more">… vis mere</button>
+				[else]
+				<p class="fp-desc-empty">Ingen beskrivelse på denne produktion endnu.</p>
+				[/if]
+
+				[if credits]
+				<p class="fp-credits notranslate">{@credits}</p>
+				[/if]
+			</div>
+
+			[if flere_videoer]
+			<div class="fp-extra">{@flere_videoer}</div>
+			[/if]
+
+			[if foto_id]
+			<div class="fp-extra">[Best_Wordpress_Gallery id="{@foto_id}"]</div>
+			[/if]
+
+		</div>
+
+		<aside class="fp-rail">
+			<h2 class="fp-rail-h">Flere produktioner</h2>
+			[final_flere_produktioner limit="6"]
+			<a class="fp-rail-all" href="https://final.dk/produktioner/">Se alle produktioner →</a>
+		</aside>
+
+	</div>
+</div>
+
+<script>
+(function () {
+	var box  = document.getElementById('fp-desc');
+	var body = document.getElementById('fp-desc-body');
+	var btn  = document.getElementById('fp-desc-more');
+
+	if (!box || !body || !btn) {
+		return;
+	}
+
+	// Klip kun, hvis teksten faktisk er længere end fire linjer.
+	if (body.scrollHeight > 124) {
+		box.classList.add('is-clamped', 'has-more');
+	}
+
+	btn.addEventListener('click', function () {
+		var klippet = box.classList.toggle('is-clamped');
+		btn.textContent = klippet ? '… vis mere' : 'vis mindre';
+	});
+})();
+</script>
+
+<div style="text-align: center; width: 100%; padding-top: 100px; padding-bottom: 100px; background-color: #252C39; padding-left: 16px; padding-right: 16px;">
+	<div style="text-align: center; max-width: 1750px; width: 100%; display: inline-block; margin-top: 0px; padding-top: 0px;">
+		[pods template="CTA Footer - Skriv til os"]
+	</div>
+</div>
