@@ -435,10 +435,13 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     ' gap:16px;margin:18px 0 0}',
     '.who{display:flex;align-items:center;gap:12px;min-width:0}',
     '.who .mark{width:44px;height:44px;border-radius:50%;flex:none;background:#1D2028;',
-    ' border:1px solid rgba(217,217,217,.12);display:grid;place-items:center;overflow:hidden}',
+    ' border:1px solid rgba(217,217,217,.12);display:grid;place-items:center;overflow:hidden;',
+    ' text-decoration:none;transition:border-color .25s ease}',
+    '.who .mark:hover{border-color:rgba(217,217,217,.32)}',
     '.who .mark img{width:26px;height:auto;display:block}',
     '.who .lines{display:flex;flex-direction:column;min-width:0}',
-    '.who .n{font-family:"REM",Verdana,sans-serif;font-size:.95rem;color:#fff;line-height:1.25}',
+    '.who .n{font-family:"REM",Verdana,sans-serif;font-size:.95rem;color:#fff;line-height:1.25;',
+    ' text-decoration:none;width:fit-content}',
     '.who .r{font-family:"REM",Verdana,sans-serif;font-size:.78rem;color:rgba(217,217,217,.45);',
     ' line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
     '.who .r a{color:rgba(217,217,217,.72);text-decoration:underline;',
@@ -669,8 +672,8 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
       + '<h1 class="yt-title">' + esc(r.title) + '</h1>'
       + (r.undertitel ? '<p class="yt-sub">' + esc(r.undertitel) + '</p>' : '')
       + '<div class="actions"><div class="who">'
-      + '<span class="mark"><img src="' + DATA.logo + '" alt="Final Film"></span>'
-      + '<span class="lines"><span class="n">Final Film</span>'
+      + '<a class="mark" href="#"><img src="' + DATA.logo + '" alt="Final Film"></a>'
+      + '<span class="lines"><a class="n" href="#">Final Film</a>'
       + '<span class="r">' + rolle.join(' &nbsp;·&nbsp; ') + '</span></span></div>'
       + (chips ? '<div class="act-chips">' + chips + '</div>' : '')
       + '</div>'

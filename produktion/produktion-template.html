@@ -34,11 +34,11 @@
 			<div class="fp-sender">
 
 				<span class="fp-who">
-					<span class="fp-mark">
+					<a class="fp-mark" href="https://final.dk/">
 						<img src="https://final.dk/wp-content/uploads/2023/08/Final-Logo@4x.webp" alt="Final Film" />
-					</span>
+					</a>
 					<span class="fp-lines">
-						<span class="fp-name">Final Film</span>
+						<a class="fp-name" href="https://final.dk/">Final Film</a>
 						<span class="fp-role notranslate">[if klient]Produceret for [if klient_link]<a href="{@klient_link}" target="_blank" rel="noopener">{@klient}</a>[else]{@klient}[/if][/if][if klient_2_link] og <a href="{@klient_2_link}" target="_blank" rel="noopener">{@klient_2}</a>[/if][if bureau] &nbsp;·&nbsp; Bureau [if bureau_link]<a href="{@bureau_link}" target="_blank" rel="noopener">{@bureau}</a>[else]{@bureau}[/if][/if]</span>
 					</span>
 				</span>
@@ -98,6 +98,20 @@
 
 <script>
 (function () {
+	/* --- Sidepanelet skal klæbe under den faste menu, ikke bag den --- */
+	var header = document.querySelector('.site-main-header-wrap.kadence-sticky-header')
+	          || document.querySelector('#masthead');
+
+	function saetToppen() {
+		var h = header ? Math.round(header.getBoundingClientRect().height) : 80;
+		document.documentElement.style.setProperty('--fp-sticky-top', (h + 16) + 'px');
+	}
+
+	saetToppen();
+	window.addEventListener('resize', saetToppen);
+	window.addEventListener('load', saetToppen);
+
+	/* --- Klip beskrivelsen, hvis den er lang --- */
 	var box  = document.getElementById('fp-desc');
 	var body = document.getElementById('fp-desc-body');
 	var btn  = document.getElementById('fp-desc-more');
