@@ -204,8 +204,9 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
   </p>
   <p class="note">
     <b>Beskrivelsen har fået en boks.</b> Den svævede før frit på siden uden noget at hvile på.
-    Nu ligger den i et felt i #1D2028 med en metalinje øverst — kategori, længde og måned — og
-    klipper sig selv til fire linjer med “vis mere”, hvis den er lang. Præcis YouTubes greb.
+    Nu ligger den i et felt i #313845 — lysere end sidens #252C39, så den løfter sig i stedet for
+    at synke ned — med en metalinje øverst og et klip til fire linjer med “vis mere”, hvis den
+    er lang. Præcis YouTubes greb.
   </p>
   <p class="note">
     <b>Sidepanelet er det, der fylder siden.</b> Seks produktioner med plakat, længde og klient
@@ -222,9 +223,9 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     sidder i afsenderrækken i højre side, hvor YouTube har sine knapper.
   </p>
   <p class="note">
-    <b>Den lilla “← Tilbage”-knap er væk.</b> Den var sidens kraftigste visuelle element og gjorde
-    det, browserens tilbageknap gør i forvejen. Brødkrummen øverst og sidepanelet til højre
-    dækker behovet.
+    <b>Den lilla “← Tilbage”-knap er væk</b>, og det samme er brødkrummerne. Knappen var sidens
+    kraftigste visuelle element og gjorde det, browserens tilbageknap gør i forvejen. Sidepanelet
+    til højre fører videre i stedet — og siden åbner nu direkte på filmen.
   </p>
   <p class="note">
     <b>Titlen er 23–33 px i stedet for 35 px fast</b>, og “Flere produktioner” er skrumpet til en
@@ -348,7 +349,9 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     ' text-transform:uppercase;color:rgba(217,217,217,.5)}',
     '.fact .val{font-size:1rem;color:#fff;text-decoration:none;display:inline-flex;align-items:baseline;',
     ' transition:color .25s ease}',
-    'a.val:hover{color:#8D8DFF}',
+    'a.val{text-decoration:underline;text-decoration-color:rgba(217,217,217,.22);',
+    ' text-underline-offset:3px;text-decoration-thickness:1px}',
+    'a.val:hover{color:#8D8DFF;text-decoration-color:#8D8DFF}',
     /* film */
     '.film{margin:0;border-radius:8px;overflow:hidden;background:#000}',
     '/* Fylder bredden. Er filmen høj, klipper max-height den ned, og',
@@ -407,7 +410,7 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
 
   /* ---------- YOUTUBE-AGTIG ---------- */
   var CSS_YT = [
-    '.yt{max-width:1400px;margin:0 auto;padding:28px 24px 0}',
+    '.yt{max-width:1400px;margin:0 auto;padding:32px 24px 0}',
     '.crumbs{font-family:"REM",Verdana,sans-serif;font-size:.78rem;color:rgba(217,217,217,.45);',
     ' margin:0 0 16px}',
     '.crumbs a{color:inherit;text-decoration:none;transition:color .2s ease}',
@@ -438,21 +441,23 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     '.who .n{font-family:"REM",Verdana,sans-serif;font-size:.95rem;color:#fff;line-height:1.25}',
     '.who .r{font-family:"REM",Verdana,sans-serif;font-size:.78rem;color:rgba(217,217,217,.45);',
     ' line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
-    '.who .r a{color:rgba(217,217,217,.72);text-decoration:none;transition:color .2s ease}',
-    '.who .r a:hover{color:#8D8DFF}',
+    '.who .r a{color:rgba(217,217,217,.72);text-decoration:underline;',
+    ' text-decoration-color:rgba(217,217,217,.22);text-underline-offset:3px;',
+    ' text-decoration-thickness:1px;transition:color .2s ease,text-decoration-color .2s ease}',
+    '.who .r a:hover{color:#8D8DFF;text-decoration-color:#8D8DFF}',
     '.act-chips{display:flex;flex-wrap:wrap;gap:8px}',
 
     /* beskrivelsesboks */
-    '.desc{background:#1D2028;border:1px solid rgba(217,217,217,.07);border-radius:8px;',
+    '.desc{background:#313845;border:1px solid rgba(255,255,255,.06);border-radius:8px;',
     ' padding:18px 20px;margin:20px 0 0}',
     '.desc-meta{font-family:"REM",Verdana,sans-serif;font-size:.85rem;color:rgba(217,217,217,.72);',
     ' margin:0 0 10px;letter-spacing:.01em}',
     '.desc-body{position:relative;overflow:hidden;transition:max-height .3s ease}',
-    '.desc-body p{margin:0 0 1em;color:rgba(217,217,217,.8);font-size:.98rem;line-height:1.7}',
+    '.desc-body p{margin:0 0 1em;color:rgba(217,217,217,.86);font-size:.98rem;line-height:1.7}',
     '.desc-body p:last-child{margin-bottom:0}',
     '.desc.clamped .desc-body{max-height:7rem}',
     '.desc.clamped .desc-body::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2.6rem;',
-    ' background:linear-gradient(to bottom,rgba(29,32,40,0),#1D2028)}',
+    ' background:linear-gradient(to bottom,rgba(49,56,69,0),#313845)}',
     '.desc-more{display:none;margin-top:10px;background:none;border:0;padding:0;cursor:pointer;',
     ' font-family:"REM",Verdana,sans-serif;font-size:.85rem;color:rgba(217,217,217,.72)}',
     '.desc-more:hover{color:#fff}',
@@ -470,9 +475,6 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     '.ri:hover{background:rgba(217,217,217,.05)}',
     '.ri-media{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#000}',
     '.ri-media img{width:100%;height:100%;object-fit:cover;display:block}',
-    '.ri-dur{position:absolute;right:5px;bottom:5px;background:rgba(16,18,25,.85);color:#fff;',
-    ' font-family:"REM",Verdana,sans-serif;font-size:.68rem;padding:1px 5px;border-radius:3px;',
-    ' line-height:1.5;letter-spacing:.02em}',
     '.ri-t{font-family:"REM",Verdana,sans-serif;font-size:.88rem;line-height:1.35;color:#fff;margin:0;',
     ' display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}',
     '.ri-k{font-family:"REM",Verdana,sans-serif;font-size:.78rem;color:rgba(217,217,217,.45);',
@@ -490,7 +492,7 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     '}',
     /* mobil */
     '@media (max-width:600px){',
-    ' .yt{padding:16px 20px 0}',
+    ' .yt{padding:18px 20px 0}',
     ' .player{margin:0 -20px;border-radius:0}',
     ' .yt-title{font-size:1.25rem;margin-top:14px}',
     ' .yt-sub{font-size:.98rem}',
@@ -572,7 +574,7 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
       facts.push('<div class="fact"><span class="lab">Klient</span>'
         + (r.klient_link
             ? '<a class="val" href="' + r.klient_link + '" target="_blank" rel="noopener">'
-              + esc(r.klient) + '<i class="arrow-ne"></i></a>'
+              + esc(r.klient) + '</a>'
             : '<span class="val">' + esc(r.klient) + '</span>')
         + '</div>');
     }
@@ -580,7 +582,7 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
       facts.push('<div class="fact"><span class="lab">Bureau</span>'
         + (r.bureau_link
             ? '<a class="val" href="' + r.bureau_link + '" target="_blank" rel="noopener">'
-              + esc(r.bureau) + '<i class="arrow-ne"></i></a>'
+              + esc(r.bureau) + '</a>'
             : '<span class="val">' + esc(r.bureau) + '</span>')
         + '</div>');
     }
@@ -622,8 +624,7 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
 
   function railItems(currentSlug){
     return DATA.rail.filter(function(x){ return x.slug !== currentSlug; }).slice(0, 6).map(function(x){
-      return '<a class="ri" href="#"><div class="ri-media"><img src="' + x.img + '" alt="">'
-        + '<span class="ri-dur">' + x.varighed + '</span></div>'
+      return '<a class="ri" href="#"><div class="ri-media"><img src="' + x.img + '" alt=""></div>'
         + '<div><p class="ri-t">' + esc(x.title) + '</p>'
         + '<p class="ri-k">' + esc(x.klient) + '</p></div></a>';
     }).join('');
@@ -638,15 +639,13 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
     if (r.klient) {
       rolle.push('Produceret for '
         + (r.klient_link
-            ? '<a href="' + r.klient_link + '" target="_blank" rel="noopener">' + esc(r.klient)
-              + '<i class="arrow-ne"></i></a>'
+            ? '<a href="' + r.klient_link + '" target="_blank" rel="noopener">' + esc(r.klient) + '</a>'
             : esc(r.klient)));
     }
     if (r.bureau) {
       rolle.push('Bureau '
         + (r.bureau_link
-            ? '<a href="' + r.bureau_link + '" target="_blank" rel="noopener">' + esc(r.bureau)
-              + '<i class="arrow-ne"></i></a>'
+            ? '<a href="' + r.bureau_link + '" target="_blank" rel="noopener">' + esc(r.bureau) + '</a>'
             : esc(r.bureau)));
     }
 
@@ -661,8 +660,6 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
 
     return shell(CSS_YT,
       '<div class="yt" id="sec">'
-      + '<p class="crumbs"><a href="#">Final Film</a><span class="sep">/</span>'
-      + '<a href="#">Produktioner</a><span class="sep">/</span>' + esc(r.title) + '</p>'
       + '<div class="grid"><div class="main">'
       + '<div class="player"><a class="poster" href="#"><img src="' + r.poster + '" alt="">'
       + '<span class="play"><span>' + PLAY + '</span></span></a></div>'
@@ -821,12 +818,12 @@ footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1p
   /* ---------- ændringstabel ---------- */
   var CHANGES = [
     ['Højre side', 'Tom', '<b>Sidepanel</b> med 6 produktioner'],
-    ['Rækkefølge', 'Video → brødkrummer → titel', '<b>Brødkrumme → video → titel → afsender</b>'],
+    ['Rækkefølge', 'Video → brødkrummer → titel', '<b>Film → titel → afsender → beskrivelse</b>'],
     ['Beskrivelse', 'Fri tekst i fuld bredde', '<b>Egen boks</b> med metalinje og “vis mere”'],
     ['Titel', '35 px, fast', '<b>Skalerer</b> 23 → 33 px'],
     ['Klient og bureau', 'Løbende tekst i grå', '<b>Afsenderrække</b> med logo, navnet er linket'],
     ['Kategorier', 'Blå links med &lt;br&gt;', '<b>Chips</b> — samme som forsiden'],
-    ['Tilbage', 'Lilla gradientknap', '<b>Brødkrumme</b> øverst'],
+    ['Tilbage', 'Lilla gradientknap', '<b>Sidepanelet</b> fører videre i stedet'],
     ['Film på mobil', 'Inden for 16 px margin', '<b>Helt ud til kanten</b>'],
     ['Afstande', '9 × &lt;br&gt;', '<b>CSS</b> — samme rytme uanset felter']
   ];
