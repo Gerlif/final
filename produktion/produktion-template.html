@@ -95,43 +95,6 @@
 
 	</div>
 </div>
-
-<script>
-(function () {
-	/* --- Sidepanelet skal klæbe under den faste menu, ikke bag den --- */
-	var header = document.querySelector('.site-main-header-wrap.kadence-sticky-header')
-	          || document.querySelector('#masthead');
-
-	function saetToppen() {
-		var h = header ? Math.round(header.getBoundingClientRect().height) : 80;
-		document.documentElement.style.setProperty('--fp-sticky-top', (h + 16) + 'px');
-	}
-
-	saetToppen();
-	window.addEventListener('resize', saetToppen);
-	window.addEventListener('load', saetToppen);
-
-	/* --- Klip beskrivelsen, hvis den er lang --- */
-	var box  = document.getElementById('fp-desc');
-	var body = document.getElementById('fp-desc-body');
-	var btn  = document.getElementById('fp-desc-more');
-
-	if (!box || !body || !btn) {
-		return;
-	}
-
-	// Klip kun, hvis teksten faktisk er længere end fire linjer.
-	if (body.scrollHeight > 124) {
-		box.classList.add('is-clamped', 'has-more');
-	}
-
-	btn.addEventListener('click', function () {
-		var klippet = box.classList.toggle('is-clamped');
-		btn.textContent = klippet ? '… vis mere' : 'vis mindre';
-	});
-})();
-</script>
-
 <div style="text-align: center; width: 100%; padding-top: 100px; padding-bottom: 100px; background-color: #252C39; padding-left: 16px; padding-right: 16px;">
 	<div style="text-align: center; max-width: 1750px; width: 100%; display: inline-block; margin-top: 0px; padding-top: 0px;">
 		[pods template="CTA Footer - Skriv til os"]

@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * De boolean-felter på produktions-poden, der fungerer som kategorier.
  * Præcis de samme, som Pods-templaten bruger i sine [if ...]-blokke.
  */
+if ( ! function_exists( 'final_produktion_kategorifelter' ) ) :
 function final_produktion_kategorifelter() {
 	return array(
 		'brandingfilm',
@@ -38,6 +39,7 @@ function final_produktion_kategorifelter() {
 		'travel',
 	);
 }
+endif;
 
 /**
  * Henter ID'er på produktioner, der deler mindst én kategori med $post_id.
@@ -105,6 +107,18 @@ function final_produktioner_nyeste( $limit, $exclude = array() ) {
 }
 
 add_shortcode( 'final_flere_produktioner', function ( $atts ) {
+	// Uanset hvad der går galt herinde, må sidens indhold ikke forsvinde.
+	try {
+		return final_flere_produktioner_render( $atts );
+	} catch ( Throwable $e ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( '[final_flere_produktioner] ' . $e->getMessage() );
+		}
+		return '';
+	}
+} );
+
+function final_flere_produktioner_render( $atts ) {
 	$atts = shortcode_atts( array(
 		'limit' => 6,
 		'id'    => 0,
@@ -171,4 +185,54 @@ add_shortcode( 'final_flere_produktioner', function ( $atts ) {
 	}
 
 	return '<div class="fp-rail-list">' . $ud . '</div>';
-} );
+}
+
+/**
+ * Scriptet til produktionssiden.
+ *
+ * Det lå før inline i Pods-templaten. Inline <script> i template-indhold
+ * bliver strippet af flere sikkerheds- og optimeringsplugins for brugere
+ * uden unfiltered_html — altså netop udloggede besøgende. Herfra er det
+ * uden for skudlinjen.
+ */
+add_action( 'wp_footer', function () {
+	if ( ! is_singular( 'produktion' ) ) {
+		return;
+	}
+	?>
+<script>
+(function () {
+	/* Sidepanelet skal klæbe under den faste menu, ikke bag den. */
+	var header = document.querySelector('.site-main-header-wrap.kadence-sticky-header')
+	          || document.querySelector('#masthead');
+
+	function saetToppen() {
+		var h = header ? Math.round(header.getBoundingClientRect().height) : 80;
+		document.documentElement.style.setProperty('--fp-sticky-top', (h + 16) + 'px');
+	}
+
+	saetToppen();
+	window.addEventListener('resize', saetToppen);
+	window.addEventListener('load', saetToppen);
+
+	/* Klip beskrivelsen, hvis den fylder mere end fire linjer. */
+	var box  = document.getElementById('fp-desc');
+	var body = document.getElementById('fp-desc-body');
+	var btn  = document.getElementById('fp-desc-more');
+
+	if (!box || !body || !btn) {
+		return;
+	}
+
+	if (body.scrollHeight > 124) {
+		box.classList.add('is-clamped', 'has-more');
+	}
+
+	btn.addEventListener('click', function () {
+		var klippet = box.classList.toggle('is-clamped');
+		btn.textContent = klippet ? '… vis mere' : 'vis mindre';
+	});
+})();
+</script>
+	<?php
+}, 99 );
