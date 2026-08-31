@@ -1,0 +1,123 @@
+/* ============================================================
+   Proces-tidslinje
+   Numrene kommer fra en CSS-tæller, ikke fra markup — tilføj eller
+   fjern et <li>, så tæller resten om af sig selv.
+   Alt er prefikset .proc-, så intet kolliderer med det bestående.
+   ============================================================ */
+
+.proc-steps{
+	position: relative;
+	margin: 0;
+	padding: 0 0 0 74px;
+	list-style: none;
+	counter-reset: proc;
+}
+
+/* Rygraden — samme forløb som jeres knapper */
+.proc-steps::before{
+	content: "";
+	position: absolute;
+	left: 23px;
+	top: 14px;
+	bottom: 14px;
+	width: 2px;
+	border-radius: 2px;
+	background: linear-gradient(180deg, #4141DF 0%, #8D8DFF 50%, #BC34FF 100%);
+	opacity: .5;
+}
+
+.proc-step{
+	position: relative;
+	margin: 0;
+	padding: 0 0 44px;
+	counter-increment: proc;
+}
+.proc-step:last-child{
+	padding-bottom: 0;
+}
+
+/* Knudepunktet med nummeret */
+.proc-step::before{
+	content: counter(proc);
+	position: absolute;
+	left: -74px;
+	top: -2px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	background: #1D2028;
+	border: 1.5px solid rgba(141,141,255,.45);
+	color: #8D8DFF;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: 1rem;
+	line-height: 1;
+	transition: border-color .3s ease, color .3s ease, background-color .3s ease;
+}
+.proc-step:hover::before{
+	background: rgba(141,141,255,.12);
+	border-color: #8D8DFF;
+	color: #fff;
+}
+
+/* Pilen ned til næste trin */
+.proc-step::after{
+	content: "";
+	position: absolute;
+	left: 18px;
+	bottom: 16px;
+	width: 12px;
+	height: 12px;
+	border-right: 2px solid rgba(141,141,255,.55);
+	border-bottom: 2px solid rgba(141,141,255,.55);
+	transform: rotate(45deg);
+}
+.proc-step:last-child::after{
+	display: none;
+}
+
+.proc-step h3{
+	font-family: "Libre Baskerville", Georgia, serif;
+	font-weight: 700;
+	font-size: 1.35rem;
+	line-height: 1.25;
+	color: #fff;
+	margin: 0 0 .45rem;
+	padding-top: .35rem;
+	text-transform: none;
+}
+
+.proc-step p{
+	margin: 0;
+	color: rgba(217,217,217,.72);
+	font-size: 1rem;
+	line-height: 1.7;
+	max-width: 52ch;
+}
+
+/* --- Mobil --- */
+@media (max-width: 600px){
+	.proc-steps{ padding-left: 56px; }
+	.proc-steps::before{ left: 17px; }
+	.proc-step{ padding-bottom: 34px; }
+	.proc-step::before{
+		left: -56px;
+		top: 0;
+		width: 36px;
+		height: 36px;
+		font-size: .85rem;
+	}
+	.proc-step::after{
+		left: 12px;
+		bottom: 12px;
+		width: 10px;
+		height: 10px;
+	}
+	.proc-step h3{ font-size: 1.15rem; padding-top: .15rem; }
+	.proc-step p{ font-size: .97rem; }
+}
+
+@media (prefers-reduced-motion: reduce){
+	.proc-step::before{ transition: none; }
+}
