@@ -1,0 +1,473 @@
+<title>Vores proces, som en tidslinje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=REM:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#EFF0F5; --surface:#FFFFFF; --surface-2:#F7F8FB;
+  --ink:#15171F; --ink-soft:#575D70; --ink-faint:#868DA1;
+  --line:rgba(21,23,31,.13); --line-soft:rgba(21,23,31,.07);
+  --accent:#3D3DE8; --accent-soft:rgba(61,61,232,.09);
+  --flag:#B4453B; --flag-soft:rgba(180,69,59,.09);
+  --shadow:0 1px 2px rgba(21,23,31,.05), 0 12px 32px -18px rgba(21,23,31,.30);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#101219; --surface:#181B24; --surface-2:#1E222D;
+    --ink:#ECEEF4; --ink-soft:#A2A9BC; --ink-faint:#767E93;
+    --line:rgba(255,255,255,.13); --line-soft:rgba(255,255,255,.07);
+    --accent:#9A9AFF; --accent-soft:rgba(154,154,255,.12);
+    --flag:#F08A80; --flag-soft:rgba(240,138,128,.12);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#101219; --surface:#181B24; --surface-2:#1E222D;
+  --ink:#ECEEF4; --ink-soft:#A2A9BC; --ink-faint:#767E93;
+  --line:rgba(255,255,255,.13); --line-soft:rgba(255,255,255,.07);
+  --accent:#9A9AFF; --accent-soft:rgba(154,154,255,.12);
+  --flag:#F08A80; --flag-soft:rgba(240,138,128,.12);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"REM","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.65;font-weight:300;
+  -webkit-font-smoothing:antialiased}
+.col{width:min(100% - 40px, 1080px);margin-inline:auto}
+h1,h2,h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;color:var(--ink);margin:0;text-wrap:balance;line-height:1.16}
+h1{font-size:clamp(2rem,1.4rem + 2.4vw,3.1rem);line-height:1.05}
+h2{font-size:clamp(1.35rem,1.1rem + 1vw,1.85rem)}
+h3{font-size:1rem}
+p{margin:0}
+em{font-style:italic}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.85em;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+.eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--accent);margin:0 0 16px}
+.eyebrow::before{content:"";display:inline-block;width:26px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px;opacity:.7}
+header.hero{padding:72px 0 40px}
+.hero .lede{max-width:62ch;margin-top:20px;color:var(--ink-soft);font-size:1.075rem}
+section{padding:44px 0}
+.sec-head{margin-bottom:24px}
+.sec-head p{color:var(--ink-soft);max-width:62ch;margin-top:10px;font-size:.95rem}
+
+.bug{border:1px solid color-mix(in srgb, var(--flag) 32%, transparent);background:var(--flag-soft);
+  border-radius:10px;padding:18px 20px;margin-top:8px}
+.bug b{color:var(--flag);font-weight:500}
+.bug p{color:var(--ink-soft);font-size:.93rem;margin-top:6px;max-width:66ch}
+.swatch{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.76rem;color:var(--ink-soft)}
+.swatch i{width:52px;height:22px;border-radius:4px;display:inline-block;border:1px solid var(--line)}
+
+.bar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.switch{display:inline-flex;flex-wrap:wrap;padding:3px;gap:3px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line-soft)}
+.switch button{font:inherit;font-size:.83rem;border:0;background:none;color:var(--ink-soft);
+  padding:7px 16px;border-radius:999px;cursor:pointer;transition:background-color .2s,color .2s}
+.switch button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:500;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.switch button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hint{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.75rem;color:var(--ink-faint)}
+
+.stage{background:#1D2028;border-radius:12px;overflow:hidden;border:1px solid var(--line-soft);box-shadow:var(--shadow)}
+.stage iframe{display:block;border:0;background:#1D2028}
+.phones{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+.phone .frame{width:414px;max-width:100%;padding:12px;border-radius:26px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.phone .frame iframe{width:390px;height:720px;border-radius:16px;background:#1D2028}
+.phone .cap{margin-top:10px;font-size:.8rem;color:var(--ink-faint);text-align:center}
+
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:26px}
+.vc{border:1px solid var(--line-soft);border-radius:10px;padding:16px 18px;background:var(--surface);box-shadow:var(--shadow)}
+.vc.pick{border-color:color-mix(in srgb, var(--accent) 42%, transparent);background:var(--accent-soft)}
+.vc h3{font-size:.98rem;margin-bottom:8px}
+.vc .tag{font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:500;display:block;margin-bottom:6px}
+.vc p{font-size:.87rem;color:var(--ink-soft);margin-bottom:5px}
+.vc p.pro::before{content:"+ ";color:var(--accent)}
+.vc p.con{color:var(--ink-faint)}
+.vc p.con::before{content:"− "}
+
+.note{border-left:2px solid var(--accent);padding:2px 0 2px 16px;color:var(--ink-soft);font-size:.92rem;margin-top:22px;max-width:64ch}
+.note b{color:var(--ink);font-weight:500}
+.note + .note{margin-top:14px}
+footer{padding:52px 0 72px;color:var(--ink-faint);font-size:.82rem;border-top:1px solid var(--line-soft);margin-top:40px}
+@media (max-width:560px){
+  .phone .frame{width:100%;padding:8px;border-radius:18px}
+  .phone .frame iframe{width:100%;height:620px;border-radius:12px}
+  .phone{flex:1 1 100%}
+  header.hero{padding:52px 0 28px}
+  section{padding:34px 0}
+}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+
+<header class="hero col">
+  <p class="eyebrow">Redesign · vores proces</p>
+  <h1>Fem trin,<br><em>på en linje</em></h1>
+  <p class="lede">
+    Sektionen er fem afsnit i to spalter, hvor rækkefølgen kun findes i tallene foran teksten —
+    øjet skal ned ad venstre spalte, op igen og ned ad højre. Herunder er den som en tidslinje,
+    hvor rækkefølgen er tegnet. Teksten er jeres egen, ord for ord.
+  </p>
+</header>
+
+<section class="col" id="fejl">
+  <div class="sec-head"><h2>Én ting skal rettes uanset hvad</h2></div>
+  <div class="bug">
+    <b>Undertitlen er usynlig.</b>
+    <p>“Fra idé til færdig animationsvideo” står med <code>palette9 = #1a202c</code> oven på en
+      <code>palette7 = #1d2028</code> baggrund. Kontrasten er <b>1,00:1</b> — teksten og baggrunden
+      har reelt samme lyshed. WCAG kræver 4,5:1. Det er den svage tekst, du kan ane i dit skærmbillede.
+      Den skal have <code>#d9d9d9</code>, som giver 11,5:1.</p>
+    <span class="swatch"><i style="background:#1d2028"></i> baggrund #1d2028</span>
+    <span class="swatch" style="margin-left:16px"><i style="background:#1a202c"></i> tekst i dag #1a202c</span>
+  </div>
+</section>
+
+<section class="col" id="desktop">
+  <div class="sec-head">
+    <h2>Desktop</h2>
+    <p>To bud. <b>A</b> er en lodret tidslinje med overskriften klæbende i venstre spalte.
+       <b>B</b> er en vandret strimmel med pile mellem trinnene.</p>
+  </div>
+  <div class="bar">
+    <div class="switch" role="group" aria-label="Vælg version">
+      <button type="button" data-view="d" data-mode="now" aria-pressed="false">Nu</button>
+      <button type="button" data-view="d" data-mode="a" aria-pressed="true">A · Tidslinje</button>
+      <button type="button" data-view="d" data-mode="b" aria-pressed="false">B · Strimmel</button>
+    </div>
+    <div class="hint" id="d-hint"></div>
+  </div>
+  <div class="stage" id="d-stage"><iframe id="d-frame" title="Desktopvisning"></iframe></div>
+  <div class="vs" id="vs"></div>
+</section>
+
+<section class="col" id="mobil">
+  <div class="sec-head">
+    <h2>Mobil</h2>
+    <p>Begge falder i én spalte. Pilene i B drejer med, så de peger nedad i stedet for til højre —
+       alle fem trin er synlige uden vandret scroll.</p>
+  </div>
+  <div class="bar">
+    <div class="switch" role="group" aria-label="Vælg version">
+      <button type="button" data-view="m" data-mode="now" aria-pressed="false">Nu</button>
+      <button type="button" data-view="m" data-mode="a" aria-pressed="true">A · Tidslinje</button>
+      <button type="button" data-view="m" data-mode="b" aria-pressed="false">B · Strimmel</button>
+    </div>
+  </div>
+  <div class="phones">
+    <div class="phone">
+      <div class="frame"><iframe id="m-frame" title="Mobilvisning"></iframe></div>
+      <p class="cap" id="m-cap">A · Tidslinje · 390 × 720</p>
+    </div>
+    <div style="flex:1 1 320px;min-width:280px;padding-top:6px" id="mnotes"></div>
+  </div>
+</section>
+
+<section class="col" id="noter">
+  <div class="sec-head"><h2>Noter</h2></div>
+  <p class="note">
+    <b>Rækkefølgen er tegnet, ikke kun nummereret.</b> I dag ligger trin 1–3 i venstre spalte og
+    4–5 i højre, så læseren selv skal regne ud, at der skal springes tilbage til toppen.
+    En linje med knudepunkter fjerner det arbejde.
+  </p>
+  <p class="note">
+    <b>Titlerne er trukket ud af brødteksten.</b> “1. Strategisk Planlægning:” står i dag som fed
+    optakt inde i afsnittet. Som selvstændig overskrift kan man skimme de fem trin på to sekunder
+    uden at læse et ord af brødteksten.
+  </p>
+  <p class="note">
+    <b>Sektionen findes på mange servicesider</b> — jeg fandt den på brandingfilm, employer branding,
+    produktvideo, explainervideo og animation, med samme fem trin og et enkelt ord skiftet ud.
+    Så det skal være ét stykke CSS, der virker alle steder, ikke fem tilpasninger.
+  </p>
+  <p class="note">
+    <b>Gradienten er jeres egen.</b> Linjen bruger <code>#4141DF → #BC34FF</code>, samme forløb som
+    knapperne, så trinnene visuelt hører til resten af sitet.
+  </p>
+</section>
+
+<footer class="col">
+  Bygget med jeres egen tekst fra animationssiden, Libre Baskerville, Nunito Sans og REM samt
+  paletten #1D2028 / #252C39 / #8D8DFF. Skift service-side, og kun ordet “animationsvideo” ændrer sig.
+</footer>
+
+<script id="payload" type="application/json">[{"n": 1, "title": "Strategisk Planlægning", "body": "Vi starter med at forstå din virksomheds mål, målgruppe og budskab. Dette danner grundlaget for en effektiv strategi til din animationsvideo."}, {"n": 2, "title": "Kreativ Udvikling", "body": "Vores kreative team arbejder sammen med dig for at udvikle en overbevisende fortælling, der afspejler din virksomheds unikke identitet og værdier."}, {"n": 3, "title": "Produktion", "body": "Med topmoderne udstyr og ekspertise i baghånden, omsætter vi idéer til levende billeder. Vi sikrer høj kvalitet og professionel udførelse i alle faser af produktionen."}, {"n": 4, "title": "Redigering og Optimering", "body": "Vi finpudser filmen, tilføjer grafiske elementer og sikrer, at den er optimeret til forskellige platforme og skærme."}, {"n": 5, "title": "Levering og Implementering", "body": "Vi leverer filmen i de ønskede formater og står klar til at hjælpe med implementering på din hjemmeside, sociale medier og andre relevante kanaler."}]</script>
+<script>
+(function(){
+  "use strict";
+  var STEPS = JSON.parse(document.getElementById('payload').textContent);
+
+  var FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">'
+    + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    + '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+    + 'family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&'
+    + 'family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&'
+    + 'family=REM:wght@400;500&display=swap">';
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  var BASE = [
+    '*{box-sizing:border-box}',
+    'html{-webkit-text-size-adjust:100%}',
+    'body{margin:0;background:#1D2028;color:#D9D9D9;',
+    ' font-family:"Nunito Sans",-apple-system,Helvetica,Arial,sans-serif;',
+    ' font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}',
+    'h2,h3{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;color:#fff;margin:0}',
+    '.wrap{max-width:1200px;margin:0 auto;padding:0 24px}',
+    '.sec{padding:96px 0}',
+    '@media (max-width:600px){.wrap{padding:0 20px}.sec{padding:56px 0}}'
+  ].join('');
+
+  /* ---------- NU ---------- */
+  var CSS_NOW = [
+    '.now-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}',
+    '.now-head h2{font-size:clamp(2.125rem,1.61rem + 2.1vw,3.5rem);line-height:1.08}',
+    '.now-head h4{font-family:"Libre Baskerville",Georgia,serif;font-weight:700;font-size:26px;',
+    /* præcis som i dag: palette9 på palette7 */
+    ' color:#1a202c;margin:14px 0 0}',
+    '.now-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:44px}',
+    '.now-cols p{margin:0 0 1.6em;color:#d9d9d9}',
+    '.now-cols b{color:#fff}',
+    '@media (max-width:900px){.now-grid,.now-cols{grid-template-columns:1fr}}'
+  ].join('');
+
+  /* ---------- A · TIDSLINJE ---------- */
+  var CSS_A = [
+    '.p-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:56px;align-items:start}',
+    '.p-head{position:sticky;top:96px}',
+    '.p-kicker{font-family:"REM",Verdana,sans-serif;text-transform:uppercase;letter-spacing:.14em;',
+    ' font-size:.75rem;color:#8D8DFF;margin:0 0 14px}',
+    '.p-kicker::before{content:"";display:inline-block;width:28px;height:1px;background:currentColor;',
+    ' vertical-align:middle;margin-right:10px}',
+    '.p-head h2{font-size:clamp(2.125rem,1.61rem + 2.1vw,3.5rem);line-height:1.08;text-wrap:balance}',
+    '.p-head h2 em{font-style:italic;font-weight:400}',
+    '.p-head p{margin:1rem 0 0;color:rgba(217,217,217,.62);font-size:1.05rem;max-width:34ch}',
+
+    '.steps{position:relative;margin:0;padding:0 0 0 74px;list-style:none}',
+    /* rygraden */
+    '.steps::before{content:"";position:absolute;left:23px;top:14px;bottom:14px;width:2px;',
+    ' border-radius:2px;background:linear-gradient(180deg,#4141DF 0%,#8D8DFF 50%,#BC34FF 100%);',
+    ' opacity:.5}',
+    '.step{position:relative;padding:0 0 44px}',
+    '.step:last-child{padding-bottom:0}',
+    /* knudepunkt */
+    '.step::before{content:attr(data-n);position:absolute;left:-74px;top:-2px;width:48px;height:48px;',
+    ' border-radius:50%;display:grid;place-items:center;background:#1D2028;',
+    ' border:1.5px solid rgba(141,141,255,.45);color:#8D8DFF;',
+    ' font-family:"REM",Verdana,sans-serif;font-size:1rem;line-height:1;',
+    ' transition:border-color .3s ease,color .3s ease,background-color .3s ease}',
+    '.step:hover::before{background:rgba(141,141,255,.12);border-color:#8D8DFF;color:#fff}',
+    /* pil mellem trinnene */
+    '.step::after{content:"";position:absolute;left:18px;bottom:16px;width:12px;height:12px;',
+    ' border-right:2px solid rgba(141,141,255,.55);border-bottom:2px solid rgba(141,141,255,.55);',
+    ' transform:rotate(45deg)}',
+    '.step:last-child::after{display:none}',
+    '.step h3{font-size:1.35rem;line-height:1.25;margin:0 0 .45rem;padding-top:.35rem}',
+    '.step p{margin:0;color:rgba(217,217,217,.72);font-size:1rem;line-height:1.7;max-width:52ch}',
+
+    '@media (max-width:1000px){',
+    ' .p-grid{grid-template-columns:1fr;gap:44px}.p-head{position:static}',
+    ' .p-head p{max-width:56ch}',
+    '}',
+    '@media (max-width:600px){',
+    ' .steps{padding-left:56px}',
+    ' .steps::before{left:17px}',
+    ' .step{padding-bottom:34px}',
+    ' .step::before{left:-56px;width:36px;height:36px;font-size:.85rem;top:0}',
+    ' .step::after{left:12px;width:10px;height:10px;bottom:12px}',
+    ' .step h3{font-size:1.15rem;padding-top:.15rem}',
+    ' .step p{font-size:.97rem}',
+    '}'
+  ].join('');
+
+  /* ---------- B · STRIMMEL ---------- */
+  var CSS_B = [
+    '.b-head{max-width:640px;margin-bottom:56px}',
+    '.b-head .p-kicker{font-family:"REM",Verdana,sans-serif;text-transform:uppercase;',
+    ' letter-spacing:.14em;font-size:.75rem;color:#8D8DFF;margin:0 0 14px}',
+    '.b-head .p-kicker::before{content:"";display:inline-block;width:28px;height:1px;',
+    ' background:currentColor;vertical-align:middle;margin-right:10px}',
+    '.b-head h2{font-size:clamp(2.125rem,1.61rem + 2.1vw,3.5rem);line-height:1.08}',
+    '.b-head h2 em{font-style:italic;font-weight:400}',
+    '.b-head p{margin:1rem 0 0;color:rgba(217,217,217,.62);font-size:1.05rem}',
+
+    '.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;align-items:start}',
+    '.cell{position:relative;padding:0 26px 0 0}',
+    '.cell:last-child{padding-right:0}',
+    /* pil mellem cellerne */
+    '.cell::after{content:"";position:absolute;right:6px;top:23px;width:11px;height:11px;',
+    ' border-top:2px solid rgba(141,141,255,.5);border-right:2px solid rgba(141,141,255,.5);',
+    ' transform:rotate(45deg)}',
+    '.cell:last-child::after{display:none}',
+    /* nummer + streg */
+    '.cell .n{display:flex;align-items:center;gap:12px;margin-bottom:18px}',
+    '.cell .n b{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;',
+    ' background:#252C39;border:1.5px solid rgba(141,141,255,.45);color:#8D8DFF;',
+    ' font-family:"REM",Verdana,sans-serif;font-size:1rem;font-weight:400;',
+    ' transition:border-color .3s ease,color .3s ease,background-color .3s ease}',
+    '.cell .n i{flex:1;height:2px;border-radius:2px;',
+    ' background:linear-gradient(90deg,rgba(141,141,255,.45),rgba(141,141,255,.12))}',
+    '.cell:last-child .n i{display:none}',
+    '.cell:hover .n b{background:rgba(141,141,255,.12);border-color:#8D8DFF;color:#fff}',
+    '.cell h3{font-size:1.12rem;line-height:1.3;margin:0 0 .5rem}',
+    '.cell p{margin:0;color:rgba(217,217,217,.7);font-size:.94rem;line-height:1.65}',
+
+    '@media (max-width:1000px){',
+    ' .strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px}',
+    ' .cell{padding-right:0}',
+    ' .cell::after{display:none}',
+    ' .cell .n i{display:block}',
+    '}',
+    '@media (max-width:600px){',
+    ' .strip{grid-template-columns:1fr;gap:0}',
+    ' .cell{padding:0 0 34px 0}',
+    ' .cell:last-child{padding-bottom:0}',
+    /* pilen drejer nedad */
+    ' .cell::after{display:block;right:auto;left:16px;top:auto;bottom:12px;',
+    '  transform:rotate(135deg)}',
+    ' .cell:last-child::after{display:none}',
+    ' .cell .n i{display:none}',
+    ' .cell .n b{width:38px;height:38px;font-size:.88rem}',
+    ' .cell h3{font-size:1.08rem}',
+    '}'
+  ].join('');
+
+  function shell(css, body){
+    return '<!doctype html><html lang="da"><head><meta charset="utf-8">'
+      + '<meta name="viewport" content="width=device-width, initial-scale=1">'
+      + FONTS + '<style>' + BASE + css + '</style></head><body>' + body + '</body></html>';
+  }
+
+  function docNow(){
+    var a = STEPS.slice(0,3).map(function(s){
+      return '<p><b>' + s.n + '. ' + esc(s.title) + ':</b> ' + esc(s.body) + '</p>';
+    }).join('');
+    var b = STEPS.slice(3).map(function(s){
+      return '<p><b>' + s.n + '. ' + esc(s.title) + ':</b> ' + esc(s.body) + '</p>';
+    }).join('');
+    return shell(CSS_NOW,
+      '<div class="sec" id="sec"><div class="wrap">'
+      + '<div class="now-grid"><div class="now-head">'
+      + '<h2><strong>Vores </strong>proces</h2>'
+      + '<h4><strong>Fra idé til færdig </strong>animationsvideo</h4>'
+      + '</div><div></div></div>'
+      + '<div class="now-cols"><div>' + a + '</div><div>' + b + '</div></div>'
+      + '</div></div>');
+  }
+
+  function docA(){
+    var items = STEPS.map(function(s){
+      return '<li class="step" data-n="' + s.n + '">'
+        + '<h3>' + esc(s.title) + '</h3>'
+        + '<p>' + esc(s.body) + '</p></li>';
+    }).join('');
+    return shell(CSS_A,
+      '<div class="sec" id="sec"><div class="wrap"><div class="p-grid">'
+      + '<div class="p-head">'
+      + '<p class="p-kicker">Vores proces</p>'
+      + '<h2>Fra idé til <em>færdig film</em></h2>'
+      + '<p>Fem trin. Vi tager os af dem alle sammen — I skal kun sige ja til retningen undervejs.</p>'
+      + '</div>'
+      + '<ol class="steps">' + items + '</ol>'
+      + '</div></div></div>');
+  }
+
+  function docB(){
+    var cells = STEPS.map(function(s){
+      return '<div class="cell">'
+        + '<div class="n"><b>' + s.n + '</b><i></i></div>'
+        + '<h3>' + esc(s.title) + '</h3>'
+        + '<p>' + esc(s.body) + '</p></div>';
+    }).join('');
+    return shell(CSS_B,
+      '<div class="sec" id="sec"><div class="wrap">'
+      + '<div class="b-head"><p class="p-kicker">Vores proces</p>'
+      + '<h2>Fra idé til <em>færdig film</em></h2>'
+      + '<p>Fem trin, fra første samtale til filmen ligger, hvor den skal bruges.</p></div>'
+      + '<div class="strip">' + cells + '</div>'
+      + '</div></div>');
+  }
+
+  function build(mode){
+    if (mode === 'now') return docNow();
+    if (mode === 'b') return docB();
+    return docA();
+  }
+
+  var DW = 1280;
+  var state = { d: 'a', m: 'a' };
+
+  function load(frame, html, after){
+    var tries = 0;
+    frame.srcdoc = html;
+    var poll = setInterval(function(){
+      tries++;
+      var d = frame.contentDocument;
+      if (d && d.getElementById('sec')) {
+        clearInterval(poll);
+        if (after) { after(); [300, 900, 2000].forEach(function(ms){ setTimeout(after, ms); }); }
+      } else if (tries > 120) { clearInterval(poll); }
+    }, 50);
+  }
+
+  function fit(){
+    var stage = document.getElementById('d-stage'), frame = document.getElementById('d-frame');
+    var d = frame.contentDocument;
+    if (!d) return;
+    var sec = d.getElementById('sec');
+    var h = sec ? Math.ceil(sec.getBoundingClientRect().height) : d.body.scrollHeight;
+    var scale = Math.min(1, stage.clientWidth / DW);
+    frame.style.width = DW + 'px';
+    frame.style.height = h + 'px';
+    frame.style.transformOrigin = 'top left';
+    frame.style.transform = 'scale(' + scale + ')';
+    stage.style.height = Math.round(h * scale) + 'px';
+    document.getElementById('d-hint').textContent =
+      'vist i ' + DW + ' px, skaleret ' + Math.round(scale * 100) + ' %  ·  sektionens højde: '
+      + h.toLocaleString('da-DK') + ' px';
+  }
+
+  function renderD(){ load(document.getElementById('d-frame'), build(state.d), fit); }
+  function renderM(){
+    document.getElementById('m-frame').srcdoc = build(state.m);
+    var navn = state.m === 'now' ? 'Nu' : (state.m === 'a' ? 'A · Tidslinje' : 'B · Strimmel');
+    document.getElementById('m-cap').textContent = navn + ' · 390 × 720';
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.switch button[data-view]'), function(b){
+    b.addEventListener('click', function(){
+      var v = b.dataset.view;
+      state[v] = b.dataset.mode;
+      Array.prototype.forEach.call(
+        document.querySelectorAll('.switch button[data-view="' + v + '"]'),
+        function(o){ o.setAttribute('aria-pressed', String(o === b)); });
+      if (v === 'd') renderD(); else renderM();
+    });
+  });
+
+  document.getElementById('vs').innerHTML =
+    '<div class="vc pick"><span class="tag">Mit valg</span><h3>A · Tidslinje</h3>'
+    + '<p class="pro">Rækkefølgen er tegnet — én linje, fem knudepunkter, pile imellem.</p>'
+    + '<p class="pro">Brødteksten får 52 tegn pr. linje. Der er plads til at teksten vokser.</p>'
+    + '<p class="pro">Overskriften klæber i venstre spalte og fylder siden ud.</p>'
+    + '<p class="con">Fylder mere i højden end to spalter gør i dag.</p></div>'
+    + '<div class="vc"><h3>B · Strimmel</h3>'
+    + '<p class="pro">Alle fem trin på én skærmlinje — hele processen på ét blik.</p>'
+    + '<p class="pro">Pilene peger fremad, som en tidslinje i et klippeprogram.</p>'
+    + '<p class="con">~200 px pr. trin på desktop. Bliver teksten længere, knækker det.</p>'
+    + '<p class="con">Falder til 2 og så 1 kolonne, så “på én linje”-pointen forsvinder.</p></div>'
+    + '<div class="vc"><span class="tag" style="color:var(--ink-faint)">Fælles</span>'
+    + '<h3>Titlerne ud af teksten</h3>'
+    + '<p class="pro">“Strategisk Planlægning” bliver en overskrift, ikke fed optakt.</p>'
+    + '<p class="pro">Man kan skimme de fem trin uden at læse et ord brødtekst.</p></div>';
+
+  document.getElementById('mnotes').innerHTML =
+    '<div class="vs" style="grid-template-columns:1fr;margin-top:0">'
+    + '<div class="vc"><h3>A på mobil</h3>'
+    + '<p class="pro">Rygraden bliver smallere, knudepunkterne 36 px — linjen holder.</p>'
+    + '<p class="pro">Læses som en liste, hvilket er præcis hvad det er.</p></div>'
+    + '<div class="vc"><h3>B på mobil</h3>'
+    + '<p class="pro">Pilene drejer 135° og peger nedad i stedet for til højre.</p>'
+    + '<p class="con">Ingen vandret scroll — men så ligner den også A.</p></div>'
+    + '</div>';
+
+  renderD(); renderM();
+  var rt;
+  window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(fit, 140); });
+})();
+</script>
