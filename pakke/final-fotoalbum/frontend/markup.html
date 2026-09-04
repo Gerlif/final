@@ -1,0 +1,68 @@
+<!-- ============================================================
+     Den markup PHP skal udsende. album.js kobler sig på klasserne.
+
+     Vigtigt: data-w og data-h er billedets NATURLIGE mål. De bruges
+     til at regne rækkerne ud, før billederne er hentet — uden dem
+     hopper gitteret, når billederne loader.
+     WordPress kender målene: wp_get_attachment_image_src() giver dem.
+     ============================================================ -->
+
+<div class="fa-gal" data-album="AAH Trøjelancering 2025">
+
+  <button type="button" class="fa-item"
+          data-w="1200" data-h="800"
+          data-full="https://final.dk/wp-content/uploads/2025/10/billede-01.jpg">
+    <img src="https://final.dk/wp-content/uploads/2025/10/billede-01-600x400.jpg"
+         srcset="https://final.dk/wp-content/uploads/2025/10/billede-01-600x400.jpg 600w,
+                 https://final.dk/wp-content/uploads/2025/10/billede-01-900x600.jpg 900w"
+         sizes="(max-width: 600px) 50vw, 33vw"
+         alt="" loading="lazy" width="1200" height="800">
+  </button>
+
+  <!-- … ét <button class="fa-item"> pr. billede … -->
+
+</div>
+
+
+<!-- ============================================================
+     Lightboxen. Udskrives ÉN gang pr. side, uanset hvor mange
+     gallerier der er — den genbruges. Læg den lige før </body>.
+     ============================================================ -->
+
+<div class="fa-lb" role="dialog" aria-modal="true" aria-label="Billedvisning">
+
+  <div class="fa-lb-top">
+    <span>
+      <span class="fa-lb-title"></span>
+      <span class="fa-lb-count"></span>
+    </span>
+    <button type="button" class="fa-lb-close" aria-label="Luk">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" aria-hidden="true">
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div class="fa-lb-mid">
+    <div class="fa-lb-stage">
+      <img class="fa-lb-img" alt="">
+    </div>
+    <button type="button" class="fa-lb-nav fa-lb-prev" aria-label="Forrige billede">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button type="button" class="fa-lb-nav fa-lb-next" aria-label="Næste billede">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <div class="fa-lb-strip"></div>
+
+</div>

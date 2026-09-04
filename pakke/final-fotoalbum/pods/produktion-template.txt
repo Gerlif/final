@@ -1,0 +1,20 @@
+ÆNDRINGEN I PODS-TEMPLATEN
+==========================
+
+Produktionssiden bruger Pods-templaten for "produktion". I den ligger i dag:
+
+    [if foto_id]
+    <div class="fp-extra">[Best_Wordpress_Gallery id="{@foto_id}"]</div>
+    [/if]
+
+Den erstattes af:
+
+    <div class="fp-extra">[final_album]</div>
+
+Uden argumenter finder shortcoden selv albummet for den produktion, man
+står på, og respekterer kontakten "Vis i produktionen". Har produktionen
+intet album, udsender den ingenting — så [if]-blokken er ikke længere
+nødvendig.
+
+Feltet foto_id kan blive stående i Pods, indtil flytningen er kørt og
+kontrolleret. Derefter kan det fjernes.
