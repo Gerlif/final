@@ -1,0 +1,613 @@
+/* ============================================================
+   Bloggen — afsender, sidepanel og kort
+   Alt er prefikset .fb-, så intet kolliderer med det bestående.
+   Skrifterne er sitets egne: "Libre Baskerville" til overskrifter,
+   "REM-Regular" til UI-tekst — samme som .fp-* på produktionssiden.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Afsenderen — F-mærket i en cirkel
+   Mærket ligger som baggrundsbillede, så markup'en bliver ren.
+   Vil I hellere have det fra mediebiblioteket, så upload
+   final-f-maerke.png og skift url(...) ud med filens adresse.
+   ------------------------------------------------------------ */
+.fb-by{
+	display: flex;
+	align-items: center;
+	gap: 13px;
+	min-width: 0;
+}
+.fb-av{
+	flex: none;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	background-color: #1D2028;
+	background-image: url("data:image/png;base64,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");
+	background-repeat: no-repeat;
+	background-position: 48% 50%;
+	background-size: 26px auto;
+	border: 1px solid rgba(217,217,217,.14);
+	box-shadow: 0 0 0 4px rgba(141,141,255,.05);
+}
+.fb-by-t{
+	display: block;
+	min-width: 0;
+}
+.fb-by-n{
+	display: block;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .95rem;
+	line-height: 1.3;
+	color: rgba(217,217,217,.7);
+}
+.fb-by-n b{
+	color: #fff;
+	font-weight: 400;
+}
+.fb-by-s{
+	display: block;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .79rem;
+	line-height: 1.35;
+	color: rgba(217,217,217,.42);
+	margin-top: 3px;
+}
+/* Afsenderen øverst i artiklen — med skillelinje under */
+.fb-by--top{
+	margin: 26px 0 0;
+	padding: 0 0 26px;
+	border-bottom: 1px solid rgba(217,217,217,.09);
+}
+/* Lille udgave: i kortenes fod og i panelets Instagram-hoved */
+.fb-av--sm{
+	width: 34px;
+	height: 34px;
+	background-size: 19px auto;
+	box-shadow: none;
+}
+
+/* ------------------------------------------------------------
+   2. Manchetten — valgfri klasse på indlæggets første afsnit
+   ------------------------------------------------------------ */
+p.fb-lede.fb-lede{
+	font-size: 1.19rem;
+	line-height: 1.65;
+	color: rgba(217,217,217,.95);
+}
+
+/* ------------------------------------------------------------
+   3. To-kolonne-rækken på indlægssiden
+   Kadence sætter align-items: flex-start på rækken, og så bliver
+   kolonnen kun så høj som sit indhold — position: sticky har
+   ikke noget at rejse i. Derfor strækkes den her.
+   ------------------------------------------------------------ */
+.fb-row.fb-row > .kt-row-column-wrap{
+	align-items: stretch;
+}
+.fb-row.fb-row > .kt-row-column-wrap > .wp-block-kadence-column{
+	align-self: stretch;
+}
+.fb-row.fb-row > .kt-row-column-wrap > .wp-block-kadence-column > .kt-inside-inner-col{
+	height: 100%;
+}
+
+/* Kolonnebredderne. Skrevet med klassen to gange, så den vinder over
+   den grid-template-columns, Kadence selv skriver ud for rækken. */
+@media (min-width: 1101px){
+	.fb-row.fb-row > .kt-row-column-wrap{
+		grid-template-columns: minmax(0, 1fr) 380px;
+		column-gap: 56px;
+	}
+}
+/* Under 1100 px falder panelet ned under artiklen. Det står her frem for
+   at bero på rækkens egne mobilindstillinger — så kan de ikke sættes
+   forkert i editoren. */
+@media (max-width: 1100px){
+	.fb-row.fb-row > .kt-row-column-wrap{
+		grid-template-columns: minmax(0, 1fr);
+		row-gap: 44px;
+	}
+}
+
+/* Panelet starter under den faste menu — samme mål som produktionssiden.
+   Klassen fb-rail må sidde enten på en <aside> eller på selve kolonnen;
+   i kolonne-tilfældet skal det være den indre wrapper, der klæber. */
+.fb-rail{
+	position: sticky;
+	top: var(--fp-sticky-top, 96px);
+}
+.wp-block-kadence-column.fb-rail{
+	position: static;
+}
+.wp-block-kadence-column.fb-rail > .kt-inside-inner-col{
+	position: sticky;
+	top: var(--fp-sticky-top, 96px);
+}
+.fb-rail-h{
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-weight: 400;
+	font-size: .72rem;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	color: rgba(217,217,217,.42);
+	margin: 0 0 14px;
+}
+/* Instagram-hovedet */
+.fb-rail-ig{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 14px;
+}
+.fb-rail-ig b{
+	display: block;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-weight: 400;
+	font-size: .88rem;
+	line-height: 1.25;
+	color: #fff;
+}
+.fb-rail-ig i{
+	display: block;
+	font-style: normal;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .76rem;
+	line-height: 1.3;
+	color: rgba(217,217,217,.42);
+	margin-top: 2px;
+}
+/* Feedet klemt ned i panelet: to kvadrater i bredden, ingen billedtekst.
+   Klassenavnene er feedets egne, så det virker på det, I allerede har.
+   To kolonner, fordi feedet lige nu leverer fire opslag — tre i bredden
+   ville efterlade ét alene på anden række. Sætter I feedet op til seks,
+   bliver det 2 × 3 af sig selv. */
+.fb-rail .finaldk-ig-grid{
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+	margin-bottom: 0;
+}
+/* Forsiden skjuler opslag fra nr. 4 og frem på desktop. I panelet er
+   der plads til dem, så reglen sættes ud af kraft her. */
+.fb-rail .finaldk-ig-grid .finaldk-ig-item{
+	display: flex;
+}
+.fb-rail .finaldk-ig-item{
+	background: none;
+	border-radius: 8px;
+}
+.fb-rail .finaldk-ig-item:hover{
+	transform: none;
+}
+.fb-rail .finaldk-ig-item-img{
+	border-radius: 8px;
+}
+.fb-rail .finaldk-ig-item-img::after{
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(16,18,25,.45);
+	opacity: 0;
+	transition: opacity .3s ease;
+}
+.fb-rail .finaldk-ig-item:hover .finaldk-ig-item-img::after{
+	opacity: 1;
+}
+.fb-rail .finaldk-ig-item-meta,
+.fb-rail .finaldk-ig-badge{
+	display: none;
+}
+/* Højst seks opslag i panelet */
+.fb-rail .finaldk-ig-grid .finaldk-ig-item:nth-child(n+7){
+	display: none;
+}
+.fb-rail-all{
+	display: inline-block;
+	margin-top: 14px;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .85rem;
+	color: rgba(217,217,217,.6);
+	text-decoration: none;
+	transition: color .2s ease;
+}
+.fb-rail-all:hover{
+	color: #fff;
+}
+.fb-rail-sep{
+	height: 1px;
+	background: rgba(217,217,217,.09);
+	margin: 32px 0;
+}
+/* "Læs også" — samme kort som i produktionssidens panel */
+.fb-ri{
+	display: grid;
+	grid-template-columns: 150px minmax(0, 1fr);
+	gap: 14px;
+	padding: 10px;
+	margin: 0 -10px;
+	border-radius: 10px;
+	text-decoration: none;
+	color: inherit;
+	transition: background-color .25s ease;
+}
+.fb-ri:hover{
+	background: rgba(217,217,217,.05);
+}
+.fb-ri-media{
+	display: block;
+	aspect-ratio: 16 / 9;
+	border-radius: 6px;
+	overflow: hidden;
+	background: #14161C;
+}
+.fb-ri-media img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.fb-ri-t{
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .89rem;
+	line-height: 1.38;
+	color: #fff;
+}
+.fb-ri-k{
+	display: block;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .77rem;
+	color: rgba(217,217,217,.42);
+	margin-top: 6px;
+}
+
+/* ------------------------------------------------------------
+   4. Del-rækken
+   ------------------------------------------------------------ */
+.fb-share{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 44px 0 0;
+	padding-top: 24px;
+	border-top: 1px solid rgba(217,217,217,.09);
+}
+.fb-share > span{
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .72rem;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	color: rgba(217,217,217,.4);
+	margin-right: 2px;
+}
+.fb-sh{
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	border: 1px solid rgba(217,217,217,.14);
+	display: grid;
+	place-items: center;
+	color: rgba(217,217,217,.65);
+	text-decoration: none;
+	transition: color .25s ease, border-color .25s ease, background-color .25s ease;
+}
+.fb-sh:hover{
+	color: #fff;
+	border-color: #8D8DFF;
+	background: rgba(141,141,255,.09);
+}
+.fb-sh svg{
+	width: 16px;
+	height: 16px;
+	display: block;
+}
+
+/* ------------------------------------------------------------
+   5. Afsenderkortet under artiklen
+   ------------------------------------------------------------ */
+.fb-author{
+	margin: 44px 0 0;
+	padding: 26px 28px;
+	background: #1D2028;
+	border: 1px solid rgba(217,217,217,.08);
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 20px;
+	align-items: start;
+}
+.fb-author .fb-av{
+	width: 58px;
+	height: 58px;
+	background-size: 33px auto;
+	margin-top: 2px;
+}
+/* Temaet giver h3 en margin-top og evt. versaler — nulstilles her */
+.fb-author h3.fb-author-t{
+	margin: 0;
+	font-family: "Libre Baskerville", Georgia, serif;
+	font-weight: 700;
+	font-size: 1.1rem;
+	line-height: 1.3;
+	color: #fff;
+	text-transform: none;
+}
+.fb-author-role{
+	display: block;
+	margin-top: 5px;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .78rem;
+	color: rgba(217,217,217,.45);
+}
+.fb-author p{
+	margin: 12px 0 0;
+	color: rgba(217,217,217,.68);
+	font-size: .96rem;
+	line-height: 1.68;
+}
+.fb-author-acts{
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-top: 18px;
+}
+.fb-chip{
+	display: inline-flex;
+	align-items: center;
+	padding: 9px 15px;
+	border: 1px solid rgba(217,217,217,.14);
+	border-radius: 8px;
+	color: rgba(217,217,217,.74);
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .83rem;
+	line-height: 1.2;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: color .28s, border-color .28s, background-color .28s;
+}
+.fb-chip:hover{
+	color: #fff;
+	border-color: #8D8DFF;
+	background: rgba(141,141,255,.08);
+}
+
+/* ------------------------------------------------------------
+   6. Oversigtssiden — Kadence Posts-blokken laves om til kort
+   Sæt "fb-posts" i blokkens felt Avanceret ▸ Ekstra CSS-klasse(r).
+   Der ændres ingen markup; alt herunder er styling af det, blokken
+   selv udskriver.
+   ------------------------------------------------------------ */
+.fb-posts.grid-cols{
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 26px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.fb-posts .kb-post-list-item{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.fb-posts .loop-entry{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: #1D2028;
+	border: 1px solid rgba(217,217,217,.08);
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 1px 2px rgba(0,0,0,.28), 0 22px 44px -30px rgba(0,0,0,.9);
+	transition: transform .35s cubic-bezier(.2,.7,.3,1),
+	            border-color .35s ease,
+	            box-shadow .35s ease;
+}
+.fb-posts .loop-entry:hover{
+	transform: translateY(-4px);
+	border-color: rgba(141,141,255,.42);
+	box-shadow: 0 1px 2px rgba(0,0,0,.28), 0 30px 54px -30px rgba(0,0,0,1);
+}
+/* Billedet — fast 16:9 uanset hvilket forhold blokken er sat til */
+.fb-posts .post-thumbnail{
+	position: relative;
+	display: block;
+	margin: 0;
+	border-radius: 0;
+}
+.fb-posts .post-thumbnail-inner{
+	position: relative;
+	aspect-ratio: 16 / 9;
+	padding: 0;
+	overflow: hidden;
+	background: #14161C;
+}
+.fb-posts .post-thumbnail-inner img{
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+/* Kategorichippen — teksten står her, ikke i markup'en */
+.fb-posts .post-thumbnail::after{
+	content: "Inspiration";
+	position: absolute;
+	left: 14px;
+	top: 14px;
+	z-index: 2;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .69rem;
+	letter-spacing: .11em;
+	text-transform: uppercase;
+	line-height: 1;
+	color: #fff;
+	background: rgba(16,18,25,.55);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	border: 1px solid rgba(255,255,255,.16);
+	padding: 6px 12px;
+	border-radius: 999px;
+}
+.fb-posts .entry-content-wrap{
+	padding: 24px 26px 22px;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	background: none;
+	box-shadow: none;
+}
+.fb-posts .entry-header{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.fb-posts .entry-title{
+	margin: 0;
+	font-family: "Libre Baskerville", Georgia, serif;
+	font-weight: 700;
+	font-size: 1.32rem;
+	line-height: 1.28;
+	letter-spacing: -.012em;
+	text-transform: none;
+	text-wrap: balance;
+}
+.fb-posts .entry-title a{
+	color: #fff;
+	text-decoration: none;
+}
+/* Hele kortet skal kunne klikkes — titlens link lægges hen over det */
+.fb-posts .entry-title a::after{
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 3;
+}
+.fb-posts .entry-summary{
+	margin: 11px 0 0;
+	padding: 0;
+}
+.fb-posts .entry-summary p{
+	margin: 0;
+	font-size: .96rem;
+	line-height: 1.62;
+	color: rgba(217,217,217,.6);
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+/* Foden: afsenderen til venstre, "Læs mere" til højre.
+   Cirklen og navnet er ::before og ::after — blokken udskriver
+   dem ikke selv, og de er ens på alle kort. */
+.fb-posts .entry-footer{
+	margin: auto 0 0;
+	padding: 20px 0 0;
+	border: 0;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: inherit;
+}
+.fb-posts .entry-footer::before{
+	content: "";
+	order: 1;
+	flex: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #252C39;
+	background-image: url("data:image/png;base64,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");
+	background-repeat: no-repeat;
+	background-position: 48% 50%;
+	background-size: 17px auto;
+	border: 1px solid rgba(217,217,217,.14);
+}
+.fb-posts .entry-footer::after{
+	content: "Skrevet af Final Film";
+	order: 2;
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .82rem;
+	line-height: 1.3;
+	color: rgba(217,217,217,.62);
+}
+.fb-posts .entry-actions{
+	order: 3;
+	margin: 0 0 0 auto;
+	padding: 0;
+	border: 0;
+}
+.fb-posts .more-link-wrap{
+	margin: 0;
+}
+.fb-posts .post-more-link{
+	font-family: "REM-Regular", Verdana, Arial, sans-serif;
+	font-size: .82rem;
+	font-weight: 400;
+	letter-spacing: 0;
+	text-transform: none;
+	text-decoration: none;
+	color: rgba(217,217,217,.62);
+	transition: color .25s ease;
+}
+.fb-posts .loop-entry:hover .post-more-link{
+	color: #fff;
+}
+.fb-posts .post-more-link svg{
+	width: 15px;
+	height: 15px;
+	vertical-align: -2px;
+	margin-left: 4px;
+}
+
+/* ------------------------------------------------------------
+   7. Tablet og mobil
+   ------------------------------------------------------------ */
+@media (max-width: 1100px){
+	.fb-rail,
+	.wp-block-kadence-column.fb-rail > .kt-inside-inner-col{
+		position: static;
+	}
+	.fb-rail .finaldk-ig-grid{
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+@media (max-width: 820px){
+	.fb-posts.grid-cols{
+		grid-template-columns: minmax(0, 1fr);
+		gap: 20px;
+	}
+}
+@media (max-width: 600px){
+	.fb-rail .finaldk-ig-grid{
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.fb-author{
+		grid-template-columns: minmax(0, 1fr);
+		gap: 14px;
+		padding: 22px 20px;
+	}
+	.fb-posts .entry-content-wrap{
+		padding: 20px 20px 18px;
+	}
+	.fb-posts .entry-title{
+		font-size: 1.18rem;
+	}
+	.fb-ri{
+		grid-template-columns: 130px minmax(0, 1fr);
+		gap: 12px;
+	}
+}
+@media (prefers-reduced-motion: reduce){
+	.fb-posts .loop-entry,
+	.fb-rail .finaldk-ig-item-img::after{
+		transition: none;
+	}
+	.fb-posts .loop-entry:hover{
+		transform: none;
+	}
+}
